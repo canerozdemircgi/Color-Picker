@@ -1,0 +1,6 @@
+*.dll
+*.exe
+*.ico
+*.png
+*.qm
+*.ttf
