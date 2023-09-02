@@ -1,0 +1,10 @@
+<RCC>
+	<qresource prefix="/Button">
+		<file>Check.png</file>
+		<file>Check-Disabled.png</file>
+		<file>Radio.png</file>
+		<file>Radio-Disabled.png</file>
+		<file>Spiral.png</file>
+		<file>Star.png</file>
+	</qresource>
+</RCC>
