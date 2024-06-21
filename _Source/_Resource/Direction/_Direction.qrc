@@ -1,0 +1,12 @@
+<RCC>
+	<qresource prefix="/Direction">
+		<file>Up.png</file>
+		<file>Up-Disabled.png</file>
+		<file>Down.png</file>
+		<file>Down-Disabled.png</file>
+		<file>Left.png</file>
+		<file>Left-Disabled.png</file>
+		<file>Right.png</file>
+		<file>Right-Disabled.png</file>
+	</qresource>
+</RCC>

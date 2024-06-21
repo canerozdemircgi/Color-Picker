@@ -1,0 +1,12 @@
+*.cpp
+*.editorconfig
+*.gitignore
+*.h
+*.md
+*.nojekyll
+*.pro
+*.qrc
+*.rc
+*.svg
+*.txt
+*.url

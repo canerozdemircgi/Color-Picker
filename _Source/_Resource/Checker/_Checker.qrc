@@ -1,0 +1,6 @@
+<RCC>
+	<qresource prefix="/Checker">
+		<file>Block.png</file>
+		<file>Slot.png</file>
+	</qresource>
+</RCC>
