@@ -18,18 +18,25 @@ CMainWindow::CMainWindow() :
 	LinkStateStatic();
 	LinkStateDynamic();
 
-	CErrorMessageReturnQuit(QDir().mkpath(CCore::folderConfig),
-							this,
-							"Error",
-							"Please Check Folder Permissions\n" + CCore::folderConfig)
+	CErrorMessageReturnQuit
+    (
+        QDir().mkpath(CCore::folderConfig),
+	    "Error",
+	    "Please Check Folder Permissions\n" + CCore::folderConfig,
+        this
+    )
 
 	if (!ConfigLoad())
 	{
 		ConfigReset();
-		CErrorMessageReturnQuit(ConfigLoad(),
-								this,
-								"Error",
-								"Please Check File Permissions\n" + CCore::fileConfig)
+
+		CErrorMessageReturnQuit
+        (
+            ConfigLoad(),
+		    "Error",
+		    "Please Check File Permissions\n" + CCore::fileConfig,
+            this
+        )
 	}
 
 	srand(time(nullptr));

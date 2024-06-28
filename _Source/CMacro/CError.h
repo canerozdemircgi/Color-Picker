@@ -12,7 +12,7 @@ if (!ok)\
 #endif
 
 #ifndef CErrorMessageReturnVoid
-#define CErrorMessageReturnVoid(ok, parent, title, message)\
+#define CErrorMessageReturnVoid(ok, title, message, parent)\
 if (!ok)\
 {\
 	new CMessage(title, message, parent);\
@@ -21,7 +21,7 @@ if (!ok)\
 #endif
 
 #ifndef CErrorMessageReturnQuit
-#define CErrorMessageReturnQuit(ok, parent, title, message)\
+#define CErrorMessageReturnQuit(ok, title, message, parent)\
 if (!ok)\
 {\
 	new CMessage(title, message, parent);\

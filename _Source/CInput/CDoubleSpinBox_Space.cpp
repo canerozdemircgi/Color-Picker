@@ -4,8 +4,11 @@
 
 #include <cmath>
 
-CDoubleSpinBox_Space::CDoubleSpinBox_Space(const int limit, QWidget *__restrict__ parent) :
-	CDoubleSpinBox(limit, parent)
+CDoubleSpinBox_Space::CDoubleSpinBox_Space(const int limitMin, const int limitMax, QWidget *__restrict__ parent) :
+	CDoubleSpinBox(std::max(std::abs(limitMin), limitMax), parent),
+
+    limitMin(limitMin),
+    limitMax(limitMax)
 {
 }
 
@@ -45,31 +48,39 @@ void CDoubleSpinBox_Space::RefreshState()
 		setDecimals(precision);
 		setSingleStep(1.0 / pow(10.0, static_cast<double>(precision)));
 
-		setMinimum(-1.0);
-		setMaximum(1.0);
+		setMinimum(limitMin / limit);
+		setMaximum(limitMax / limit);
 	}
 	else
 	{
 		setDecimals(0);
 		setSingleStep(1.0);
 
-		setMinimum(static_cast<double>(-1 * limit));
-		setMaximum(static_cast<double>(limit));
+		setMinimum(static_cast<double>(limitMin));
+		setMaximum(static_cast<double>(limitMax));
 	}
 	RefreshResult();
 
 	blockSignals(false);
 }
 
-void CDoubleSpinBox_Space::SetLimit(const int limit)
+void CDoubleSpinBox_Space::SetLimit(const int limitMin, const int limitMax)
 {
+    this->limitMin = limitMin;
+    this->limitMax = limitMax;
+    limit = std::max(std::abs(limitMin), limitMax);
+
 	blockSignals(true);
 
-	this->limit = limit;
-	if (!stateDouble)
+	if (stateDouble)
+    {
+        setMinimum(limitMin / limit);
+        setMaximum(limitMax / limit);
+    }
+    else
 	{
-		setMinimum(static_cast<double>(-1 * limit));
-		setMaximum(static_cast<double>(limit));
+		setMinimum(static_cast<double>(limitMin));
+		setMaximum(static_cast<double>(limitMax));
 	}
 
 	blockSignals(false);

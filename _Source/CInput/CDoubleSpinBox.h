@@ -16,11 +16,12 @@ public:
 	static bool stateGamma;
 	static double gamma;
 
-	GetAccessorProtected(int, limit, Limit)
-	GetAccessorProtected(int, result, Result)
-	void SetResult(const int result);
 
 protected:
+    GetAccessorProtected(int, limit, Limit)
+    GetAccessorProtected(int, result, Result)
+    void SetResult(const int result);
+
 	void RefreshResult();
 };
 

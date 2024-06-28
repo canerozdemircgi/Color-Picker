@@ -22,8 +22,8 @@ void CMainWindow::State_RGB_QRadioButton_Toggled()
 		Alpha_QComboBox.setItemText(0, "RGBA");
 		Alpha_QComboBox.setItemText(1, "ARGB");
 
-		XMin_QDSpinBox.SetLimit(255);
-		XMax_QDSpinBox.SetLimit(255);
+		XMin_QDSpinBox.SetLimit(-255, 255);
+		XMax_QDSpinBox.SetLimit(-255, 255);
 		XMin_QDSpinBox.SetResult(-255);
 		XMax_QDSpinBox.SetResult(255);
 
@@ -56,8 +56,8 @@ void CMainWindow::State_GRY_QRadioButton_Toggled()
 		Alpha_QComboBox.setItemText(0, "GGGA");
 		Alpha_QComboBox.setItemText(1, "AGGG");
 
-		XMin_QDSpinBox.SetLimit(255);
-		XMax_QDSpinBox.SetLimit(255);
+		XMin_QDSpinBox.SetLimit(-255, 255);
+		XMax_QDSpinBox.SetLimit(-255, 255);
 		XMin_QDSpinBox.SetResult(-255);
 		XMax_QDSpinBox.SetResult(255);
 
@@ -106,8 +106,8 @@ void CMainWindow::State_HSL_QRadioButton_Toggled()
 		Alpha_QComboBox.setItemText(0, "HSLA");
 		Alpha_QComboBox.setItemText(1, "AHSL");
 
-		XMin_QDSpinBox.SetLimit(359);
-		XMax_QDSpinBox.SetLimit(359);
+		XMin_QDSpinBox.SetLimit(-359, 359);
+		XMax_QDSpinBox.SetLimit(-359, 359);
 		XMin_QDSpinBox.SetResult(-359);
 		XMax_QDSpinBox.SetResult(359);
 
@@ -140,8 +140,8 @@ void CMainWindow::State_HSV_QRadioButton_Toggled()
 		Alpha_QComboBox.setItemText(0, "HSVA");
 		Alpha_QComboBox.setItemText(1, "AHSV");
 
-		XMin_QDSpinBox.SetLimit(359);
-		XMax_QDSpinBox.SetLimit(359);
+		XMin_QDSpinBox.SetLimit(-359, 359);
+		XMax_QDSpinBox.SetLimit(-359, 359);
 		XMin_QDSpinBox.SetResult(-359);
 		XMax_QDSpinBox.SetResult(359);
 
@@ -591,35 +591,59 @@ void CMainWindow::Load_QPushButton_MouseLeftReleased(const QString &__restrict__
 
 		const QList<QString> lines(CCore::SeparateQString(stream.readAll(), '\n', 64, &ok));
 		colorLoad.close();
-		CErrorMessageReturnVoid(ok, this,
-								"Error",
-								"Corrupted or Incompatible File\n" + fileName);
+		CErrorMessageReturnVoid
+        (
+            ok,
+		    "Error",
+		    "Corrupted or Incompatible File\n" + fileName,
+            this
+        );
 
 		int l = -1;
 		int r, g, b, a;
 		for (int i = 0; i < slotSize; ++i)
 		{
 			const QList<QString> line(CCore::SeparateQString(lines[++l], ',', 6, &ok));
-			CErrorMessageReturnVoid(ok, this,
-									"Error",
-									"Corrupted or Incompatible File\n" + fileName);
+			CErrorMessageReturnVoid
+            (
+                ok,
+			    "Error",
+			    "Corrupted or Incompatible File\n" + fileName,
+                this
+            );
 
 			r = line[0].toInt(&ok);
-			CErrorMessageReturnVoid(ok, this,
-									"Error",
-									"Corrupted or Incompatible File\n" + fileName);
+			CErrorMessageReturnVoid
+            (
+                ok,
+			    "Error",
+			    "Corrupted or Incompatible File\n" + fileName,
+                this
+            );
 			g = line[1].toInt(&ok);
-			CErrorMessageReturnVoid(ok, this,
-									"Error",
-									"Corrupted or Incompatible File\n" + fileName);
+			CErrorMessageReturnVoid
+            (
+                ok,
+			    "Error",
+			    "Corrupted or Incompatible File\n" + fileName,
+                this
+            );
 			b = line[2].toInt(&ok);
-			CErrorMessageReturnVoid(ok, this,
-									"Error",
-									"Corrupted or Incompatible File\n" + fileName);
+			CErrorMessageReturnVoid
+            (
+                ok,
+			    "Error",
+			    "Corrupted or Incompatible File\n" + fileName,
+                this
+            );
 			a = line[3].toInt(&ok);
-			CErrorMessageReturnVoid(ok, this,
-									"Error",
-									"Corrupted or Incompatible File\n" + fileName);
+			CErrorMessageReturnVoid
+            (
+                ok,
+			    "Error",
+			    "Corrupted or Incompatible File\n" + fileName,
+                this
+            );
 
 			slot[i]->SetColor(QColor::fromRgb(r, g, b, a));
 			slot[i]->name = line[4];
