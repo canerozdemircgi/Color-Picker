@@ -28,7 +28,7 @@ public:
 	cv::InterpolationFlags magQuality;
 
 	void MouseMove(const int x, const int y);
-	void MouseLeftRelease();
+	void MouseRelease();
 
 private:
 	QLabel picture;

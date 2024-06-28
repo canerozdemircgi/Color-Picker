@@ -1,68 +1,71 @@
 #include "CStyle.h"
 
-const QFont CStyle::fontTitle(QFont("Roboto", 9));
+extern QFont font;
+
+const QFont CStyle::getFontTitle()
+{
+    QFont fontTitle(font);
+    fontTitle.setPointSize(9);
+    return fontTitle;
+}
+
+const QFont CStyle::fontTitle(CStyle::getFontTitle());
 
 const QString CStyle::style("Fusion");
-const QString CStyle::styleSheet(1 + R"(
+const QString CStyle::styleSheet(R"(
 QWidget
 {
-background: #444;
-color: #ccc;
+background: #404040;
+color: #c0c0c0;
 }
 
 QWidget[accessibleName="QMain"]
 {
-border: 1px solid #ccc;
+border: 1px solid #c0c0c0;
 }
 
 QFrame:disabled
 {
-color: #888;
-}
-
-QLabel
-{
-selection-background-color: #f0f0f0;
-selection-color: #101010;
+color: #808080;
 }
 
 QLabel[accessibleName="QLabelHalf"]
 {
-border-top: 1px solid #888;
-border-bottom: 0 none #888;
-border-left: 1px solid #888;
-border-right: 1px solid #888;
+border-top: 1px solid #808080;
+border-bottom: 0 none #808080;
+border-left: 1px solid #808080;
+border-right: 1px solid #808080;
 border-top-left-radius: 2px;
 border-top-right-radius: 2px;
 }
 
 QLabel[accessibleName="QLabelImage"]
 {
-background: #666;
-border: 3px solid #666;
+background: #606060;
+border: 3px solid #606060;
 border-radius: 2px;
 }
 
 QPushButton
 {
-background: #666;
-border: 1px solid #666;
+background: #606060;
+border: 1px solid #606060;
 border-radius: 2px;
 }
 
 QPushButton:hover
 {
-background: #888;
-border: 1px solid #888;
+background: #808080;
+border: 1px solid #808080;
 color: #2b2b2b;
 }
 
 QPushButton:pressed,
 QPushButton:checked
 {
-background: #444;
-border: 1px solid #aaa;
-color: #ccc;
+background: #404040;
+border: 1px solid #a0a0a0;
+color: #c0c0c0;
 }
 
 QPushButton::menu-indicator
@@ -72,23 +75,21 @@ background: none;
 
 QPushButton[accessibleName="QMenuButton"]
 {
-padding-left: -20px;
-border-top-right-radius: 0;
-border-bottom-right-radius: 16px;
+padding-left: -18px;
 }
 
 QPushButton:disabled
 {
-background: #666;
-border: 1px solid #666;
-color: #888;
+background: #606060;
+border: 1px solid #606060;
+color: #808080;
 }
 
 QCheckBox:disabled,
 QRadioButton:disabled,
 QMenu::item:disabled
 {
-color: #888;
+color: #808080;
 }
 
 QCheckBox::indicator:checked:hover,
@@ -130,7 +131,7 @@ QDoubleSpinBox::down-button:pressed,
 QComboBox::drop-down:pressed,
 QComboBox::down-arrow:pressed
 {
-background: #444;
+background: #404040;
 }
 
 QCheckBox::indicator
@@ -145,19 +146,19 @@ padding: 2px;
 
 QCheckBox::indicator:checked
 {
-image: url(:/Button/Check.png);
+image: url(:/Button/Check.svg);
 }
 
 QCheckBox::indicator:checked:disabled
 {
-image: url(:/Button/Check-Disabled.png);
+image: url(:/Button/Check-Disabled.svg);
 }
 
 QRadioButton::indicator
 {
 background: #2b2b2b;
 border: 1px solid #2b2b2b;
-border-radius: 7px;
+border-radius: 7.499px;
 width: 7px;
 height: 7px;
 padding: 3px;
@@ -165,12 +166,12 @@ padding: 3px;
 
 QRadioButton::indicator:checked
 {
-image: url(:/Button/Radio.png);
+image: url(:/Button/Radio.svg);
 }
 
 QRadioButton::indicator:checked:disabled
 {
-image: url(:/Button/Radio-Disabled.png);
+image: url(:/Button/Radio-Disabled.svg);
 }
 
 QLineEdit
@@ -189,13 +190,40 @@ border: 1px solid #2b2b2b;
 border-radius: 2px;
 }
 
+[hasTopBorderRadius=true]
+{
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
+}
+
+[hasBottomBorderRadius=true]
+{
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+}
+
+[hasNoBorderRadius=true]
+{
+border-radius: 0;
+}
+
 QSpinBox:disabled,
 QDoubleSpinBox:disabled,
 QLineEdit::disabled,
 QComboBox:disabled
 {
-background: #444;
-color: #888;
+background: #404040;
+color: #808080;
+}
+
+:disabled[hasTopBorderRadius=true]
+{
+border-bottom: 0 none #808080;
+}
+
+:disabled[hasBottomBorderRadius=true]
+{
+border-top: 0 none #808080;
 }
 
 QSpinBox::up-button:hover,
@@ -205,7 +233,7 @@ QDoubleSpinBox::down-button:hover,
 QComboBox::drop-down:hover,
 QComboBox::down-arrow:hover
 {
-background: #666;
+background: #606060;
 }
 
 QSpinBox::up-button,
@@ -214,7 +242,7 @@ QSpinBox::down-button,
 QDoubleSpinBox::down-button,
 QComboBox::drop-down
 {
-background: #555;
+background: #505050;
 border-radius: 2px;
 width: 14px;
 subcontrol-origin: padding;
@@ -223,12 +251,16 @@ subcontrol-origin: padding;
 QSpinBox::up-button,
 QDoubleSpinBox::up-button
 {
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
 subcontrol-position: top right;
 }
 
 QSpinBox::down-button,
 QDoubleSpinBox::down-button
 {
+border-top-left-radius: 0;
+border-top-right-radius: 0;
 subcontrol-position: bottom right;
 }
 
@@ -237,7 +269,7 @@ QDoubleSpinBox::up-arrow
 {
 width: 6px;
 height: 6px;
-image: url(:/Direction/Up.png);
+image: url(:/Direction/Up.svg);
 }
 
 QSpinBox::down-arrow,
@@ -246,7 +278,7 @@ QComboBox::down-arrow
 {
 width: 6px;
 height: 6px;
-image: url(:/Direction/Down.png);
+image: url(:/Direction/Down.svg);
 }
 
 QSpinBox::up-arrow:disabled,
@@ -254,7 +286,7 @@ QSpinBox::up-arrow:off,
 QDoubleSpinBox::up-arrow:disabled,
 QDoubleSpinBox::up-arrow:off
 {
-image: url(:/Direction/Up-Disabled.png);
+image: url(:/Direction/Up-Disabled.svg);
 }
 
 QSpinBox::down-arrow:disabled,
@@ -263,7 +295,7 @@ QDoubleSpinBox::down-arrow:disabled,
 QDoubleSpinBox::down-arrow:off,
 QComboBox::down-arrow:disabled
 {
-image: url(:/Direction/Down-Disabled.png);
+image: url(:/Direction/Down-Disabled.svg);
 }
 
 QSpinBox[accessibleName="QInputNo"]::up-button,
@@ -282,9 +314,9 @@ QComboBox QListView,
 QMenu,
 QToolTip
 {
-background: #444;
-border: 1px solid #ccc;
-color: #ccc;
+background: #404040;
+border: 1px solid #c0c0c0;
+color: #c0c0c0;
 border-radius: 2px;
 }
 
@@ -296,7 +328,7 @@ left: 5px;
 QMenu::item
 {
 height: 25px;
-padding: 0 20px;
+padding: 0 20px 0 10px;
 }
 
 QMenu::item:selected
@@ -306,7 +338,8 @@ background: #2b2b2b;
 
 QMenu::separator
 {
-background: #ccc;
+background: #c0c0c0;
 height: 1px;
 margin: 10px;
-})");
+}
+)");

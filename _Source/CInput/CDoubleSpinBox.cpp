@@ -26,9 +26,9 @@ void CDoubleSpinBox::RefreshResult()
 {
 	blockSignals(true);
 
-	if(stateDouble)
+	if (stateDouble)
 	{
-		if(stateGamma)
+		if (stateGamma)
 			setValue(CCore::PowFull(static_cast<double>(result) / static_cast<double>(limit), gamma));
 		else
 			setValue(static_cast<double>(result) / static_cast<double>(limit));

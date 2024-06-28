@@ -10,6 +10,9 @@ public:
 
 	static const QString style;
 	static const QString styleSheet;
+
+private:
+    static const QFont getFontTitle();
 };
 
 #endif

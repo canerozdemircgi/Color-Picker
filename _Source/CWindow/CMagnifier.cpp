@@ -5,31 +5,13 @@
 #include "../CMacro/CSignal.h"
 
 #include <QtGui/QGuiApplication>
-#include <QtGui/QScreen>
 #include <QWindow>
 #include <QApplication>
-#include <QDesktopWidget>
 
 cv::Mat CMagnifier::screen0;
 
-void CMagnifier::InitScreen0(const bool invert)
-{
-	QRect screenGeometry = qApp->primaryScreen()->virtualGeometry();
-	QPixmap screenPixmap = qApp->primaryScreen()->grabWindow(QApplication::desktop()->winId(), screenGeometry.x(), screenGeometry.y(), screenGeometry.width(), screenGeometry.height());
-
-	QImage image0 = /*QGuiApplication::primaryScreen()->grabWindow(0)*/screenPixmap.toImage().convertToFormat(QImage::Format::Format_RGB888);
-	screen0 = cv::Mat(
-		image0.height(),
-		image0.width(),
-		CV_8UC3,
-		image0.bits(),
-		image0.bytesPerLine()
-	).clone();
-	if(invert)
-		bitwise_not(screen0, screen0);
-}
-
-CMagnifier::CMagnifier(
+CMagnifier::CMagnifier
+(
 	const bool invert,
 	const double magRatio,
 	const int magResX,
@@ -67,7 +49,7 @@ CMagnifier::CMagnifier(
 	MouseWheeled(MouseWheeled)
 {
 	setWindowFlag(Qt::WindowType::WindowStaysOnTopHint);
-	setWindowFlag(Qt::WindowType::FramelessWindowHint, true);
+	setWindowFlag(Qt::WindowType::FramelessWindowHint);
 	setCursor(Qt::CursorShape::CrossCursor);
 
 	setMinimumSize(magResX, magResY);
@@ -75,44 +57,59 @@ CMagnifier::CMagnifier(
 	picture.resize(magResX, magResY);
 
 	InitScreen0(invert);
-	copyMakeBorder(
-		screen0, screen0,
-		magResOffY, magResOffY,
-		magResOffX, magResOffX,
-		cv::BorderTypes::BORDER_CONSTANT
-	);
 
 	setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose);
 	show();
+    grabMouse();
 	MouseMove(lastPos.x(), lastPos.y());
+}
+
+void CMagnifier::InitScreen0(const bool invert)
+{
+    const QRect screenGeometry = qApp->primaryScreen()->virtualGeometry();
+    const QPixmap screenPixmap = qApp->primaryScreen()->grabWindow(0, screenGeometry.x(), screenGeometry.y(), screenGeometry.width(), screenGeometry.height());
+
+    QImage image0 = screenPixmap.toImage().convertToFormat(QImage::Format::Format_RGB888, Qt::ImageConversionFlag::ColorOnly);
+    screen0 = cv::Mat
+    (
+        image0.height(),
+        image0.width(),
+        CV_8UC3,
+        image0.bits(),
+        image0.bytesPerLine()
+    ).clone();
+    if (invert)
+        cv::bitwise_not(screen0, screen0);
+
+    cv::copyMakeBorder
+    (
+        screen0, screen0,
+        magResOffY, magResOffY,
+        magResOffX, magResOffX,
+        cv::BorderTypes::BORDER_CONSTANT
+    );
 }
 
 void CMagnifier::mousePressEvent(QMouseEvent *__restrict__ event)
 {
-	if(event->button() == Qt::MouseButton::LeftButton)
+	if (event->button() == Qt::MouseButton::LeftButton)
 	{
 		setWindowOpacity(0.0);
 		InitScreen0(invert);
-		copyMakeBorder(
-			screen0, screen0,
-			magResOffY, magResOffY,
-			magResOffX, magResOffX,
-			cv::BorderTypes::BORDER_CONSTANT
-		);
 		setWindowOpacity(1.0);
 
-		QPoint posOld = geometry().center();
-		setWindowFlag(Qt::WindowType::FramelessWindowHint, true);
+		const QPoint posOld = geometry().center();
+		setWindowFlag(Qt::WindowType::FramelessWindowHint);
 		show();
-		QPoint posNew = geometry().center();
+        const QPoint posNew = geometry().center();
 		move(pos() - (posNew - posOld));
 	}
-	else if(event->button() == Qt::MouseButton::RightButton)
+	else if (event->button() == Qt::MouseButton::RightButton)
 	{
 		magQuality = jump MouseRightPressed();
 		MouseMove(lastPos.x(), lastPos.y());
 	}
-	else if(event->button() == Qt::MouseButton::MiddleButton)
+	else if (event->button() == Qt::MouseButton::MiddleButton)
 	{
 		invert = jump MouseMiddlePressed();
 		bitwise_not(screen0, screen0);
@@ -122,20 +119,17 @@ void CMagnifier::mousePressEvent(QMouseEvent *__restrict__ event)
 
 void CMagnifier::mouseReleaseEvent(QMouseEvent *__restrict__ event)
 {
-	if(event->button() == Qt::MouseButton::LeftButton)
-	{
-		lastPos = event->globalPos();
-		MouseMove(lastPos.x(), lastPos.y());
-		MouseLeftRelease();
-	}
+    lastPos = event->globalPos();
+    MouseMove(lastPos.x(), lastPos.y());
+    MouseRelease();
 }
 
-void CMagnifier::MouseLeftRelease()
+void CMagnifier::MouseRelease()
 {
-	QPoint posOld = geometry().center();
+	const QPoint posOld = geometry().center();
 	setWindowFlag(Qt::WindowType::FramelessWindowHint, false);
 	show();
-	QPoint posNew = geometry().center();
+    const QPoint posNew = geometry().center();
 	move(pos() - (posNew - posOld));
 }
 
@@ -150,13 +144,16 @@ void CMagnifier::MouseMove(const int x, const int y)
 	move(pos() + (QPoint(x, y) - geometry().center()));
 
 	const cv::Rect cropped(x - magFacOffX, y - magFacOffY, magFacX, magFacY);
-	cv::Mat screen0Cropped(screen0(cropped));
+    cv::Mat screen0Cropped(screen0(cropped));
 	cv::resize(screen0Cropped, screen0Cropped, cv::Size(magResX, magResY), 0, 0, magQuality);
-	picture.setPixmap(QPixmap::fromImage(QImage(screen0Cropped.data,
-												screen0Cropped.cols,
-												screen0Cropped.rows,
-												screen0Cropped.step,
-												QImage::Format::Format_RGB888)));
+    picture.setPixmap(QPixmap::fromImage(QImage
+    (
+        screen0Cropped.data,
+	    screen0Cropped.cols,
+	    screen0Cropped.rows,
+	    screen0Cropped.step,
+	    QImage::Format::Format_RGB888
+    )));
 
 	const QPoint coord(picture.mapFromGlobal(QPoint(x, y)));
 	int id = screen0Cropped.channels() * (screen0Cropped.cols * coord.y() + coord.x()) - 1;
@@ -169,7 +166,7 @@ void CMagnifier::MouseMove(const int x, const int y)
 void CMagnifier::wheelEvent(QWheelEvent *__restrict__ event)
 {
 	const double val = event->angleDelta().y() > 0 ? 0.1 : -0.1;
-	if(magRatio + val >= 1.0 - 1.0 / pow(10.0, CDoubleSpinBox::precision))
+	if (magRatio + val >= 1.0 - 1.0 / pow(10.0, CDoubleSpinBox::precision))
 	{
 		magRatio += val;
 

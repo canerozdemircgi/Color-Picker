@@ -10,9 +10,9 @@ CDoubleSpinBox_Info::CDoubleSpinBox_Info(const int limit, QWidget *__restrict__ 
 
 void CDoubleSpinBox_Info::ValueChanged(const double result)
 {
-	if(stateDouble)
+	if (stateDouble)
 	{
-		if(stateGamma)
+		if (stateGamma)
 			this->result = CCore::RoundToInt(CCore::PowFull(result, 1.0 / gamma) * static_cast<double>(limit));
 		else
 			this->result = CCore::RoundToInt(result * static_cast<double>(limit));
@@ -27,7 +27,7 @@ void CDoubleSpinBox_Info::RefreshState()
 {
 	blockSignals(true);
 
-	if(stateDouble)
+	if (stateDouble)
 	{
 		setDecimals(precision);
 		setMaximum(1.0);
@@ -49,15 +49,15 @@ void CDoubleSpinBox_Info::wheelEvent(QWheelEvent *__restrict__ event)
 
 void CDoubleSpinBox_Info::stepBy(int step)
 {
-	if(step > 0)
+	if (step > 0)
 	{
-		if(result == limit)
+		if (result == limit)
 			return;
 		jump ValueChangedNotBySet(++result);
 	}
-	else if(step < 0)
+	else if (step < 0)
 	{
-		if(result == 0)
+		if (result == 0)
 			return;
 		jump ValueChangedNotBySet(--result);
 	}

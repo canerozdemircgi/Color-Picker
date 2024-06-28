@@ -6,47 +6,52 @@
 #include "CMacro/CError.h"
 
 #include <QtCore/QTextStream>
+#include <QtCore/QFile>
 
 void CMainWindow::ConfigReset() const
 {
 	QFile config(CCore::fileConfig);
-	if(config.open(QIODevice::OpenModeFlag::WriteOnly))
+	if (config.open(QIODevice::OpenModeFlag::WriteOnly))
 	{
 		QTextStream stream(&config);
 
 		stream
-			<< "0 0" << endl
-			<< "0 #808080 " << endl
-			<< "0 1" << endl
+			<< "0 0" << Qt::endl
+			<< "0 #808080 " << Qt::endl
+			<< "0 1" << Qt::endl
 
-			<< "0 0" << endl
-			<< "0 3 0 2.2" << endl
-			<< "2.0 256 256 0 0" << endl
+			<< "0 0" << Qt::endl
+			<< "0 3 0 2.2" << Qt::endl
+			<< "4.0 256 256 0 0" << Qt::endl
 
-			<< "-255 255" << endl
-			<< "-255 255" << endl
-			<< "-255 255" << endl
-			<< "-255 255" << endl
+			<< "-255 255" << Qt::endl
+			<< "-255 255" << Qt::endl
+			<< "-255 255" << Qt::endl
+			<< "0 255" << Qt::endl
 
 			<< x() << ' ' << y();
 
 		config.close();
-		new CMessage(this,
+		new CMessage
+        (
 			"Success",
-			"Configurations Have Been Resetted\n" + CCore::fileConfig
+			"Configurations Have Been Resetted\n" + CCore::fileConfig,
+            this
 		);
 	}
 	else
-		new CMessage(this,
+		new CMessage
+        (
 			"Error",
-			"Please Check File Permissions\n" + CCore::fileConfig
+			"Please Check File Permissions\n" + CCore::fileConfig,
+            this
 		);
 }
 
 bool CMainWindow::ConfigLoad()
 {
 	QFile config(CCore::fileConfig);
-	if(config.open(QIODevice::OpenModeFlag::ReadOnly))
+	if (config.open(QIODevice::OpenModeFlag::ReadOnly))
 	{
 		bool ok;
 
@@ -158,51 +163,53 @@ bool CMainWindow::ConfigLoad()
 void CMainWindow::ConfigSave() const
 {
 	QFile config(CCore::fileConfig);
-	if(config.open(QIODevice::OpenModeFlag::WriteOnly))
+	if (config.open(QIODevice::OpenModeFlag::WriteOnly))
 	{
 		QTextStream stream(&config);
 
 		stream
 			<< CWidget_Slot::Selected()->index << ' '
-			<< CRadioButton_Mode::indexSelected << endl
+			<< CRadioButton_Mode::indexSelected << Qt::endl
 
 			<< CConfig::startSlots << ' '
 			<< CConfig::colorEmpty << ' '
-			<< CConfig::colorCustom << endl
+			<< CConfig::colorCustom << Qt::endl
 
 			<< Simple_QPushButton.isChecked() << ' '
-			<< ATop_QPushButton.isChecked() << endl
+			<< ATop_QPushButton.isChecked() << Qt::endl
 
 			<< Alpha_QCheckBox.isChecked() << ' '
-			<< Alpha_QComboBox.currentIndex() << endl
+			<< Alpha_QComboBox.currentIndex() << Qt::endl
 
 			<< Float_QCheckBox.isChecked() << ' '
 			<< CDoubleSpinBox::precision << ' '
 			<< Gamma_QCheckBox.isChecked() << ' '
-			<< Gamma_QDSpinBox.value() << endl
+			<< Gamma_QDSpinBox.value() << Qt::endl
 
 			<< MagnifyRat_QDSpinBox.value() << ' '
 			<< MagnifyResX_QSpinBox.value() << ' '
 			<< MagnifyResY_QSpinBox.value() << ' '
 			<< MagnifyQuality_QComboBox.currentIndex() << ' '
-			<< MagnifyInvert_QCheckBox.isChecked() << endl
+			<< MagnifyInvert_QCheckBox.isChecked() << Qt::endl
 
 			<< XMin_QDSpinBox.Result() << ' '
-			<< XMax_QDSpinBox.Result() << endl
+			<< XMax_QDSpinBox.Result() << Qt::endl
 			<< YMin_QDSpinBox.Result() << ' '
-			<< YMax_QDSpinBox.Result() << endl
+			<< YMax_QDSpinBox.Result() << Qt::endl
 			<< ZMin_QDSpinBox.Result() << ' '
-			<< ZMax_QDSpinBox.Result() << endl
+			<< ZMax_QDSpinBox.Result() << Qt::endl
 			<< WMin_QDSpinBox.Result() << ' '
-			<< WMax_QDSpinBox.Result() << endl
+			<< WMax_QDSpinBox.Result() << Qt::endl
 
 			<< x() << ' ' << y();
 
 		config.close();
 	}
 	else
-		new CMessage(this,
+		new CMessage
+        (
 			"Error",
-			"Please Check File Permissions\n" + CCore::fileConfig
+			"Please Check File Permissions\n" + CCore::fileConfig,
+            this
 		);
 }

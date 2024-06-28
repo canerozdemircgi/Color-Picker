@@ -119,8 +119,8 @@ private slots:
 	void State_Gamma_QCheckBox_toggled(const bool checked);
 	void State_Gamma_QDSpinBox_valueChanged(const double value);
 
-	static void State_Name_QLineEdit_textEdited(const QString &__restrict__ arg);
-	static void State_Tag_QLineEdit_textEdited(const QString &__restrict__ arg);
+	void State_Name_QLineEdit_textEdited(const QString &__restrict__ arg);
+	void State_Tag_QLineEdit_textEdited(const QString &__restrict__ arg);
 	void State_Hex_QLineEdit_returnPressed();
 };
 

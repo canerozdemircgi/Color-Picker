@@ -5,7 +5,7 @@
 
 void CMainWindow::LinkStateStatic()
 {
-	connect(Title_QMenu.addAction(QPixmap(":/Direction/Right.png").scaled(10, 10, Qt::AspectRatioMode::IgnoreAspectRatio, Qt::TransformationMode::SmoothTransformation), "Configuration"), &QAction::triggered, this, &CMainWindow::State_Config_QAction_triggered, CCore::connection);
+	connect(Title_QMenu.addAction(QPixmap(":/Direction/Right.svg").scaled(10, 10, Qt::AspectRatioMode::IgnoreAspectRatio, Qt::TransformationMode::SmoothTransformation), "Configuration"), &QAction::triggered, this, &CMainWindow::State_Config_QAction_triggered, CCore::connection);
 	connect(Title_QMenu.addAction("Help"), &QAction::triggered, this, &CMainWindow::State_Help_QAction_triggered, CCore::connection);
 	connect(Title_QMenu.addAction("About"), &QAction::triggered, this, &CMainWindow::State_About_QAction_triggered, CCore::connection);
 
@@ -56,17 +56,17 @@ void CMainWindow::LinkStateStatic()
 	connect(&INTP_QDSpinBox, static_cast<void(QDoubleSpinBox::*)(const double)>(&QDoubleSpinBox::valueChanged), &INTP_QDSpinBox, &CDoubleSpinBox_Info::ValueChanged, CCore::connection);
 	connect(&ALPH_QDSpinBox, static_cast<void(QDoubleSpinBox::*)(const double)>(&QDoubleSpinBox::valueChanged), &ALPH_QDSpinBox, &CDoubleSpinBox_Info::ValueChanged, CCore::connection);
 
-	RGB1_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_RGB1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	RGB2_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_RGB2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	RGB3_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_RGB3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	HSL1_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_HSL1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	HSL2_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_HSL2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	HSL3_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_HSL3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	HSV1_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_HSV1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	HSV2_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_HSV2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	HSV3_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_HSV3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	LUMI_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_LUMI_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	INTP_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_INTP_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	RGB1_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_RGB1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	RGB2_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_RGB2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	RGB3_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_RGB3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	HSL1_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_HSL1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	HSL2_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_HSL2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	HSL3_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_HSL3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	HSV1_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_HSV1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	HSV2_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_HSV2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	HSV3_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_HSV3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	LUMI_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_LUMI_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	INTP_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_INTP_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
 
 	connect(&Name_QLineEdit, &QLineEdit::textEdited, this, &CMainWindow::State_Name_QLineEdit_textEdited, CCore::connection);
 	connect(&Tag_QLineEdit, &QLineEdit::textEdited, this, &CMainWindow::State_Tag_QLineEdit_textEdited, CCore::connection);
@@ -85,17 +85,17 @@ void CMainWindow::LinkStateStatic()
 	Random_QPushButton.MouseMiddleReleased = std::bind(&CMainWindow::State_Random_QPushButton_MouseMiddleReleased, this);
 
 	CWidget_Slot::MouseLeftPressed = std::bind(static_cast<void(CMainWindow::*)()>(&CMainWindow::RefreshAll), this);
-	CWidget_Slot::MouseWheeled = bind(&CMainWindow::State_Slot_MouseWheeled, this, std::placeholders::_1);
+	CWidget_Slot::MouseWheeled = std::bind(&CMainWindow::State_Slot_MouseWheeled, this, std::placeholders::_1);
 }
 
 void CMainWindow::LinkStateDynamic()
 {
-	ALPH_QDSpinBox.ValueChangedNotBySet = bind(&CMainWindow::State_ALPH_RGB_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	ALPH_QDSpinBox.ValueChangedNotBySet = std::bind(&CMainWindow::State_ALPH_RGB_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
 
-	Blocks_QWidget.XBlock_QWidget.MouseMoved = bind(&CMainWindow::State_RGB1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	Blocks_QWidget.YBlock_QWidget.MouseMoved = bind(&CMainWindow::State_RGB2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	Blocks_QWidget.ZBlock_QWidget.MouseMoved = bind(&CMainWindow::State_RGB3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
-	Blocks_QWidget.WBlock_QWidget.MouseMoved = bind(&CMainWindow::State_ALPH_RGB_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	Blocks_QWidget.XBlock_QWidget.MouseMoved = std::bind(&CMainWindow::State_RGB1_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	Blocks_QWidget.YBlock_QWidget.MouseMoved = std::bind(&CMainWindow::State_RGB2_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	Blocks_QWidget.ZBlock_QWidget.MouseMoved = std::bind(&CMainWindow::State_RGB3_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
+	Blocks_QWidget.WBlock_QWidget.MouseMoved = std::bind(&CMainWindow::State_ALPH_RGB_QDSpinBox_ValueChangedNotBySet, this, std::placeholders::_1);
 
 	RandomColor = std::bind(&CMainWindow::RandomColorRGB, this);
 	RefreshHex = std::bind(&CMainWindow::RefreshHex3, this);

@@ -4,7 +4,7 @@
 
 #include <cmath>
 
-const QString CCore::folderConfig(QStandardPaths::writableLocation(QStandardPaths::StandardLocation::DocumentsLocation) + "/UD+");
+const QString CCore::folderConfig(QStandardPaths::writableLocation(QStandardPaths::StandardLocation::DocumentsLocation) + "/Color-Picker");
 const QString CCore::fileConfig(folderConfig + "/Color Picker.cfg");
 
 const Qt::ConnectionType CCore::connection(static_cast<Qt::ConnectionType>(Qt::ConnectionType::DirectConnection | Qt::ConnectionType::UniqueConnection));

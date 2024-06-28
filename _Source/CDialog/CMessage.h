@@ -9,7 +9,7 @@
 class CMessage : public QDialog
 {
 public:
-	explicit CMessage(const QWidget *__restrict__ parent, const QString &__restrict__ title, const QString &__restrict__ message);
+	explicit CMessage(const QString &__restrict__ title, const QString &__restrict__ message, const QWidget *__restrict__ parent);
 
 private:
 	CLabel_Title Title_QLabel;

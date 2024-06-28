@@ -6,11 +6,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QStyleFactory>
 
+QFont font("Roboto");
+
 int main(int argc, char *argv[])
 {
-	QFontDatabase::addApplicationFont(":/Font/Roboto-Regular");
-	QFont font("Roboto");
+	QFontDatabase::addApplicationFont(":/Font/Roboto[wdth,wght]");
 	font.setPointSizeF(8.6);
+    font.setKerning(true);
 
 	const QApplication application(argc, argv);
 	application.setStyle(QStyleFactory::create(CStyle::style));

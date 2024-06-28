@@ -2,7 +2,7 @@
 
 #include "../CGeneral/CStyle.h"
 
-CMessage::CMessage(const QWidget *__restrict__ parent, const QString &__restrict__ title, const QString &__restrict__ message) :
+CMessage::CMessage(const QString &__restrict__ title, const QString &__restrict__ message, const QWidget *__restrict__ parent) :
 	QDialog(),
 
 	Title_QLabel(this),
@@ -21,7 +21,7 @@ CMessage::CMessage(const QWidget *__restrict__ parent, const QString &__restrict
 	Title_QLabel.setFont(CStyle::fontTitle);
 	Title_QLabel.setText(title);
 
-	Icon_QLabel.setPixmap(QPixmap(":/Logo/Color Picker.png"));
+	Icon_QLabel.setPixmap(QPixmap(":/Logo/Color Picker.svg"));
 	Icon_QLabel.setAccessibleName("QLabelImage");
 	Close_QPushButton.setText("OK");
 	Close_QPushButton.setDefault(true);

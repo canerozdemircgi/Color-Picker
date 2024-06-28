@@ -21,8 +21,8 @@ CWidget_Slot::CWidget_Slot(const int index, QWidget *__restrict__ parent) :
 	Mask_QLabel(this),
 	Target_QLabel(this),
 
-	targetBlack(QPixmap(":/Target/1 Black.png")),
-	targetWhite(QPixmap(":/Target/1 White.png"))
+	targetBlack(QPixmap(":/Target/1 Black.svg")),
+	targetWhite(QPixmap(":/Target/1 White.svg"))
 {
 	setAutoFillBackground(true);
 
@@ -62,7 +62,7 @@ void CWidget_Slot::SetColor(const QColor &__restrict__ color)
 	pal.setColor(QPalette::ColorRole::Window, color.rgb());
 	setPalette(pal);
 
-	if(lumi < 128)
+	if (lumi < 128)
 		Target_QLabel.setPixmap(targetWhite);
 	else
 		Target_QLabel.setPixmap(targetBlack);
@@ -70,7 +70,7 @@ void CWidget_Slot::SetColor(const QColor &__restrict__ color)
 
 void CWidget_Slot::mousePressEvent(QMouseEvent *__restrict__ event)
 {
-	if(event->button() == Qt::MouseButton::LeftButton)
+	if (event->button() == Qt::MouseButton::LeftButton)
 	{
 		SetSelected();
 		jump MouseLeftPressed();

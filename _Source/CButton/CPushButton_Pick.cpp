@@ -10,17 +10,20 @@ CPushButton_Pick::CPushButton_Pick(QWidget *__restrict__ parent) :
 
 void CPushButton_Pick::mousePressEvent(QMouseEvent *__restrict__ event)
 {
-	if(event->button() == Qt::MouseButton::LeftButton)
+	if (event->button() == Qt::MouseButton::LeftButton)
 		jump MouseLeftPressed();
-	else if(event->button() == Qt::MouseButton::RightButton)
+	else if (event->button() == Qt::MouseButton::RightButton)
 		jump MouseRightPressed();
-	else if(event->button() == Qt::MouseButton::MiddleButton)
+	else if (event->button() == Qt::MouseButton::MiddleButton)
 		jump MouseMiddlePressed();
 }
 
-void CPushButton_Pick::mouseMoveEvent(QMouseEvent *__restrict__)
+void CPushButton_Pick::mouseMoveEvent(QMouseEvent *__restrict__ event)
 {
-	jump MouseMoved();
+    QPushButton::mouseMoveEvent(event);
+
+    if (event->buttons())
+	    jump MouseMoved();
 }
 
 void CPushButton_Pick::mouseReleaseEvent(QMouseEvent *__restrict__)

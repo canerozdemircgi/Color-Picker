@@ -7,24 +7,24 @@
 
 #ifndef CErrorReturnBool
 #define CErrorReturnBool(ok)\
-if(!ok)\
+if (!ok)\
 	return false;
 #endif
 
 #ifndef CErrorMessageReturnVoid
 #define CErrorMessageReturnVoid(ok, parent, title, message)\
-if(!ok)\
+if (!ok)\
 {\
-	new CMessage(parent, title, message);\
+	new CMessage(title, message, parent);\
 	return;\
 }
 #endif
 
 #ifndef CErrorMessageReturnQuit
 #define CErrorMessageReturnQuit(ok, parent, title, message)\
-if(!ok)\
+if (!ok)\
 {\
-	new CMessage(parent, title, message);\
+	new CMessage(title, message, parent);\
 	QCoreApplication::quit();\
 }
 #endif

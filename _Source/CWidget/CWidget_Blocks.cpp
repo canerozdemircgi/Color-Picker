@@ -11,7 +11,7 @@ CWidget_Blocks::CWidget_Blocks(QWidget *__restrict__ parent) :
 	WBlock_QWidget(this)
 {
 	Checker_QLabel.setGeometry(120, 0, 40, 400);
-	Checker_QLabel.setPixmap(QPixmap(":/Checker/Block.png"));
+	Checker_QLabel.setPixmap(QPixmap(":/Checker/Block.svg"));
 
 	XBlock_QWidget.setGeometry(0, 0, 40, 400);
 	YBlock_QWidget.setGeometry(40, 0, 40, 400);

@@ -23,7 +23,7 @@ CMainWindow::CMainWindow() :
 							"Error",
 							"Please Check Folder Permissions\n" + CCore::folderConfig)
 
-	if(!ConfigLoad())
+	if (!ConfigLoad())
 	{
 		ConfigReset();
 		CErrorMessageReturnQuit(ConfigLoad(),
@@ -155,37 +155,46 @@ void CMainWindow::RefreshHex4ARGB()
 
 void CMainWindow::RefreshBlock3RGB()
 {
-	Blocks_QWidget.XBlock_QWidget.SetGradient(
-		QColor::fromRgb(
+	Blocks_QWidget.XBlock_QWidget.SetGradient
+    (
+		QColor::fromRgb
+        (
 			255,
 			CWidget_Slot::Selected()->Rgb2(),
 			CWidget_Slot::Selected()->Rgb3()
 		),
-		QColor::fromRgb(
+		QColor::fromRgb
+        (
 			0,
 			CWidget_Slot::Selected()->Rgb2(),
 			CWidget_Slot::Selected()->Rgb3()
 		)
 	);
-	Blocks_QWidget.YBlock_QWidget.SetGradient(
-		QColor::fromRgb(
+	Blocks_QWidget.YBlock_QWidget.SetGradient
+    (
+		QColor::fromRgb
+        (
 			CWidget_Slot::Selected()->Rgb1(),
 			255,
 			CWidget_Slot::Selected()->Rgb3()
 		),
-		QColor::fromRgb(
+		QColor::fromRgb
+        (
 			CWidget_Slot::Selected()->Rgb1(),
 			0,
 			CWidget_Slot::Selected()->Rgb3()
 		)
 	);
-	Blocks_QWidget.ZBlock_QWidget.SetGradient(
-		QColor::fromRgb(
+	Blocks_QWidget.ZBlock_QWidget.SetGradient
+    (
+		QColor::fromRgb
+        (
 			CWidget_Slot::Selected()->Rgb1(),
 			CWidget_Slot::Selected()->Rgb2(),
 			255
 		),
-		QColor::fromRgb(
+		QColor::fromRgb
+        (
 			CWidget_Slot::Selected()->Rgb1(),
 			CWidget_Slot::Selected()->Rgb2(),
 			0
@@ -199,37 +208,46 @@ void CMainWindow::RefreshBlock3RGB()
 
 void CMainWindow::RefreshBlock3GRY()
 {
-	Blocks_QWidget.XBlock_QWidget.SetGradient(
-		QColor::fromRgb(
+	Blocks_QWidget.XBlock_QWidget.SetGradient
+    (
+		QColor::fromRgb
+        (
 			255,
 			255,
 			255
 		),
-		QColor::fromRgb(
+		QColor::fromRgb
+        (
 			0,
 			0,
 			0
 		)
 	);
-	Blocks_QWidget.YBlock_QWidget.SetGradient(
-		QColor::fromRgb(
+	Blocks_QWidget.YBlock_QWidget.SetGradient
+    (
+		QColor::fromRgb
+        (
 			255,
 			255,
 			255
 		),
-		QColor::fromRgb(
+		QColor::fromRgb
+        (
 			0,
 			0,
 			0
 		)
 	);
-	Blocks_QWidget.ZBlock_QWidget.SetGradient(
-		QColor::fromRgb(
+	Blocks_QWidget.ZBlock_QWidget.SetGradient
+    (
+		QColor::fromRgb
+        (
 			255,
 			255,
 			255
 		),
-		QColor::fromRgb(
+		QColor::fromRgb
+        (
 			0,
 			0,
 			0
@@ -243,34 +261,42 @@ void CMainWindow::RefreshBlock3GRY()
 
 void CMainWindow::RefreshBlock3HSL()
 {
-	Blocks_QWidget.XBlock_QWidget.SetGradientHSL(
+	Blocks_QWidget.XBlock_QWidget.SetGradientHSL
+    (
 		CWidget_Slot::Selected()->Hsl2(),
 		CWidget_Slot::Selected()->Hsl3()
 	);
-	Blocks_QWidget.YBlock_QWidget.SetGradient(
-		QColor::fromHsl(
+	Blocks_QWidget.YBlock_QWidget.SetGradient
+    (
+		QColor::fromHsl
+        (
 			CWidget_Slot::Selected()->Hsl1(),
 			255,
 			CWidget_Slot::Selected()->Hsl3()
 		),
-		QColor::fromHsl(
+		QColor::fromHsl
+        (
 			CWidget_Slot::Selected()->Hsl1(),
 			0,
 			CWidget_Slot::Selected()->Hsl3()
 		)
 	);
-	Blocks_QWidget.ZBlock_QWidget.SetGradient(
-		QColor::fromHsl(
+	Blocks_QWidget.ZBlock_QWidget.SetGradient
+    (
+		QColor::fromHsl
+        (
 			CWidget_Slot::Selected()->Hsl1(),
 			CWidget_Slot::Selected()->Hsl2(),
 			255
 		),
-		QColor::fromHsl(
+		QColor::fromHsl
+        (
 			CWidget_Slot::Selected()->Hsl1(),
 			CWidget_Slot::Selected()->Hsl2(),
 			128
 		),
-		QColor::fromHsl(
+		QColor::fromHsl
+        (
 			CWidget_Slot::Selected()->Hsl1(),
 			CWidget_Slot::Selected()->Hsl2(),
 			0
@@ -284,29 +310,36 @@ void CMainWindow::RefreshBlock3HSL()
 
 void CMainWindow::RefreshBlock3HSV()
 {
-	Blocks_QWidget.XBlock_QWidget.SetGradientHSV(
+	Blocks_QWidget.XBlock_QWidget.SetGradientHSV
+    (
 		CWidget_Slot::Selected()->Hsv2(),
 		CWidget_Slot::Selected()->Hsv3()
 	);
-	Blocks_QWidget.YBlock_QWidget.SetGradient(
-		QColor::fromHsv(
+	Blocks_QWidget.YBlock_QWidget.SetGradient
+    (
+		QColor::fromHsv
+        (
 			CWidget_Slot::Selected()->Hsv1(),
 			255,
 			CWidget_Slot::Selected()->Hsv3()
 		),
-		QColor::fromHsv(
+		QColor::fromHsv
+        (
 			CWidget_Slot::Selected()->Hsv1(),
 			0,
 			CWidget_Slot::Selected()->Hsv3()
 		)
 	);
-	Blocks_QWidget.ZBlock_QWidget.SetGradient(
-		QColor::fromHsv(
+	Blocks_QWidget.ZBlock_QWidget.SetGradient
+    (
+		QColor::fromHsv
+        (
 			CWidget_Slot::Selected()->Hsv1(),
 			CWidget_Slot::Selected()->Hsv2(),
 			255
 		),
-		QColor::fromHsv(
+		QColor::fromHsv
+        (
 			CWidget_Slot::Selected()->Hsv1(),
 			CWidget_Slot::Selected()->Hsv2(),
 			0
@@ -322,14 +355,17 @@ void CMainWindow::RefreshBlock4()
 {
 	ALPH_QDSpinBox.SetResult(CWidget_Slot::Selected()->Alph());
 
-	Blocks_QWidget.WBlock_QWidget.SetGradient(
-		QColor::fromRgb(
+	Blocks_QWidget.WBlock_QWidget.SetGradient
+    (
+		QColor::fromRgb
+        (
 			CWidget_Slot::Selected()->Rgb1(),
 			CWidget_Slot::Selected()->Rgb2(),
 			CWidget_Slot::Selected()->Rgb3(),
 			255
 		),
-		QColor::fromRgb(
+		QColor::fromRgb
+        (
 			CWidget_Slot::Selected()->Rgb1(),
 			CWidget_Slot::Selected()->Rgb2(),
 			CWidget_Slot::Selected()->Rgb3(),

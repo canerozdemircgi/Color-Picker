@@ -12,7 +12,7 @@ public:
 private:
 	const QPixmap pixmap;
 
-	void enterEvent(QEvent *__restrict__ event) override;
+	void enterEvent(QEnterEvent *__restrict__ event) override;
 	void leaveEvent(QEvent *__restrict__ event) override;
 };
 

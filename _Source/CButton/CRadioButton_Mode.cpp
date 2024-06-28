@@ -14,7 +14,7 @@ CRadioButton_Mode::CRadioButton_Mode(const int index, QWidget *__restrict__ pare
 void CRadioButton_Mode::checkStateSet()
 {
 	QRadioButton::checkStateSet();
-	if(Toggled != nullptr)
+	if (Toggled != nullptr)
 		jump Toggled();
 }
 

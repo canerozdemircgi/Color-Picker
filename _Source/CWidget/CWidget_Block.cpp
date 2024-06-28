@@ -11,8 +11,8 @@ CWidget_Block::CWidget_Block(QWidget *__restrict__ parent) :
 	Move_QWidget(this),
 	Target_QLabel(&Move_QWidget),
 
-	targetBlack(QPixmap(":/Target/1 Black.png")),
-	targetWhite(QPixmap(":/Target/1 White.png")),
+	targetBlack(QPixmap(":/Target/1 Black.svg")),
+	targetWhite(QPixmap(":/Target/1 White.svg")),
 
 	valueBeingSet(false)
 {
@@ -26,7 +26,7 @@ void CWidget_Block::SetEnabled(const bool value)
 {
 	setEnabled(value);
 
-	if(value)
+	if (value)
 		Target_QLabel.setVisible(true);
 	else
 	{
@@ -37,7 +37,7 @@ void CWidget_Block::SetEnabled(const bool value)
 
 void CWidget_Block::SetGradient(const QColor &__restrict__ x, const QColor &__restrict__ y)
 {
-	if(valueBeingSet)
+	if (valueBeingSet)
 		return;
 
 	QLinearGradient grad(0.0, 0.0, 0.0, static_cast<double>(height()));
@@ -50,7 +50,7 @@ void CWidget_Block::SetGradient(const QColor &__restrict__ x, const QColor &__re
 
 void CWidget_Block::SetGradient(const QColor &__restrict__ x, const QColor &__restrict__ y, const QColor &__restrict__ z)
 {
-	if(valueBeingSet)
+	if (valueBeingSet)
 		return;
 
 	QLinearGradient grad(0.0, 0.0, 0.0, static_cast<double>(height()));
@@ -64,7 +64,7 @@ void CWidget_Block::SetGradient(const QColor &__restrict__ x, const QColor &__re
 
 void CWidget_Block::SetGradientHSL(const int y, const int z)
 {
-	if(valueBeingSet)
+	if (valueBeingSet)
 		return;
 
 	QLinearGradient grad(0.0, 0.0, 0.0, static_cast<double>(height()));
@@ -82,7 +82,7 @@ void CWidget_Block::SetGradientHSL(const int y, const int z)
 
 void CWidget_Block::SetGradientHSV(const int y, const int z)
 {
-	if(valueBeingSet)
+	if (valueBeingSet)
 		return;
 
 	QLinearGradient grad(0.0, 0.0, 0.0, static_cast<double>(height()));
@@ -112,6 +112,8 @@ void CWidget_Block::mousePressEvent(QMouseEvent *__restrict__ event)
 
 void CWidget_Block::mouseMoveEvent(QMouseEvent *__restrict__ event)
 {
+    Target_QLabel.move(std::clamp(event->x(), 0, 40), Target_QLabel.y());
+
 	const int y = event->y() <= 0 ? 255
 				: event->y() >= Move_QWidget.rect().bottom() - Target_QLabel.height() ? 0
 				: GetResult(event->y());
@@ -123,18 +125,18 @@ void CWidget_Block::mouseMoveEvent(QMouseEvent *__restrict__ event)
 
 void CWidget_Block::wheelEvent(QWheelEvent *__restrict__ event)
 {
-	if(event->angleDelta().y() > 0)
+	if (event->angleDelta().y() > 0)
 	{
-		if(Target_QLabel.y() > Move_QWidget.rect().top())
+		if (Target_QLabel.y() > Move_QWidget.rect().top())
 		{
 			valueBeingSet = true;
 			jump MouseMoved(GetResult(Target_QLabel.y()) + 1);
 			valueBeingSet = false;
 		}
 	}
-	else if(event->angleDelta().y() < 0)
+	else if (event->angleDelta().y() < 0)
 	{
-		if(Target_QLabel.y() < Move_QWidget.rect().bottom() - Target_QLabel.height())
+		if (Target_QLabel.y() < Move_QWidget.rect().bottom() - Target_QLabel.height())
 		{
 			valueBeingSet = true;
 			jump MouseMoved(GetResult(Target_QLabel.y()) - 1);
@@ -152,7 +154,7 @@ int CWidget_Block::GetResult(const int coord) const
 void CWidget_Block::SetResult(const int result, const int lumi)
 {
 	const int area = Move_QWidget.rect().bottom() - Move_QWidget.rect().top() - Target_QLabel.height();
-	Target_QLabel.move(20, CCore::RoundToInt(static_cast<double>(area * (limit - result)) / static_cast<double>(limit)));
+	Target_QLabel.move(Target_QLabel.x(), CCore::RoundToInt(static_cast<double>(area * (limit - result)) / static_cast<double>(limit)));
 
 	Target_QLabel.setPixmap(lumi < 128 ? targetWhite : targetBlack);
 }

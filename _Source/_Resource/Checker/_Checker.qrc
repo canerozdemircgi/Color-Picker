@@ -1,6 +1,6 @@
 <RCC>
 	<qresource prefix="/Checker">
-		<file>Block.png</file>
-		<file>Slot.png</file>
+		<file>Block.svg</file>
+		<file>Slot.svg</file>
 	</qresource>
 </RCC>

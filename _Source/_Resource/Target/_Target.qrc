@@ -1,8 +1,8 @@
 <RCC>
 	<qresource prefix="/Target">
-		<file>1 Black.png</file>
-		<file>1 White.png</file>
-		<file>2 Big.png</file>
-		<file>2 Small.png</file>
+		<file>1 Black.svg</file>
+		<file>1 White.svg</file>
+		<file>2 Big.svg</file>
+		<file>2 Small.svg</file>
 	</qresource>
 </RCC>

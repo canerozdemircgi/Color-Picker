@@ -1,6 +1,6 @@
 *.dll
 *.exe
 *.ico
-*.png
+*.svg
 *.qm
 *.ttf

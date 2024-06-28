@@ -14,7 +14,7 @@ class CConfig : public QDialog
 	Q_OBJECT
 
 public:
-	explicit CConfig(const QWidget *__restrict__ parent, const std::function<void(const int)> &__restrict__ State_FloatPrec_QSpinBox_valueChanged);
+	explicit CConfig(const std::function<void(const int)> &__restrict__ state_FloatPrec_QSpinBox_valueChanged, const QWidget *__restrict__ parent);
 
 	static int startSlots;
 	static QString colorEmpty;
@@ -40,12 +40,13 @@ private:
 
 	void State_CustomSlot_QPushButton_MouseLeftReleased();
 
-	const std::function<void(const int)> State_FloatPrec_QSpinBox_valueChanged;
+	const std::function<void(const int)> state_FloatPrec_QSpinBox_valueChanged;
 
 private slots:
 	void State_StartSlots_QComboBox_currentIndexChanged(const int index);
-	static void State_CustomSlot_QLineEdit_textEdited(const QString &__restrict__ arg);
+	void State_CustomSlot_QLineEdit_textEdited(const QString &__restrict__ arg);
 	void State_EmptyColor_QLineEdit_returnPressed() const;
+    void State_FloatPrec_QSpinBox_valueChanged(const int arg) const;
 
 public:
 	enum Slots

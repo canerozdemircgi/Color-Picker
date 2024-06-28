@@ -15,10 +15,10 @@ void CPushButton_Sta::mouseReleaseEvent(QMouseEvent *__restrict__ event)
 {
 	clearFocus();
 
-	if(event->button() == Qt::MouseButton::LeftButton && MouseLeftReleased != nullptr)
+	if (event->button() == Qt::MouseButton::LeftButton && MouseLeftReleased != nullptr)
 		jump MouseLeftReleased();
-	else if(event->button() == Qt::MouseButton::RightButton && MouseRightReleased != nullptr)
+	else if (event->button() == Qt::MouseButton::RightButton && MouseRightReleased != nullptr)
 		jump MouseRightReleased();
-	else if(event->button() == Qt::MouseButton::MiddleButton && MouseMiddleReleased != nullptr)
+	else if (event->button() == Qt::MouseButton::MiddleButton && MouseMiddleReleased != nullptr)
 		jump MouseMiddleReleased();
 }
