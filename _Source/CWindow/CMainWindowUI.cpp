@@ -113,7 +113,7 @@ CMainWindowUI::CMainWindowUI() :
 	Title_QLabel.setFont(CStyle::fontTitle);
 	Title_QLabel.setText("Color-Picker");
 	Icon_QPushButton.setGeometry(2, 2, 79, 27);
-	Icon_QPushButton.setText(QString::fromUtf8("\u00A0") + "Menu");
+	Icon_QPushButton.setText(QString::fromUtf8("\u00A0").repeated(2) + "Menu");
 	Icon_QPushButton.setIcon(QPixmap(":/Logo/Color Picker.svg"));
 	Icon_QPushButton.setIconSize(QSize(18, 18));
 	Icon_QPushButton.setAccessibleName("QMenuButton");

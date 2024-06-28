@@ -75,7 +75,7 @@ background: none;
 
 QPushButton[accessibleName="QMenuButton"]
 {
-padding-left: -18px;
+padding-left: -13px;
 }
 
 QPushButton:disabled
