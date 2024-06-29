@@ -158,7 +158,7 @@ QRadioButton::indicator
 {
 background: #2b2b2b;
 border: 1px solid #2b2b2b;
-border-radius: 7.499px;
+border-radius: 7px;
 width: 7px;
 height: 7px;
 padding: 3px;
