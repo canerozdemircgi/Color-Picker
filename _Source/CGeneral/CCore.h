@@ -2,8 +2,8 @@
 #define CCore_H
 
 #include <iostream>
-
 #include <QtCore/QDebug>
+
 #include <QtCore/QList>
 
 class CCore

@@ -78,7 +78,8 @@ private:
 	void RefreshAll(const QColor &__restrict__ color);
 
 	void State_Empty_QPushButton_MouseLeftReleased();
-	void State_Empty_QPushButton_MouseRightReleased();
+    void State_Empty_QPushButton_MouseRightReleased();
+    void State_Empty_QPushButton_MouseRightReleased(const QString &__restrict__ hexadecimal);
 	void State_Random_QPushButton_MouseLeftReleased();
 	void State_Random_QPushButton_MouseRightReleased();
 	void State_Random_QPushButton_MouseMiddleReleased();
@@ -87,7 +88,6 @@ private:
 	void State_Invert_QPushButton_MouseRightReleased();
 
 	void State_Load_QPushButton_MouseLeftReleased();
-	void Load_QPushButton_MouseLeftReleased(const QString &__restrict__ fileName);
 	void State_Save_QPushButton_MouseLeftReleased();
 	void State_Reset_QPushButton_MouseLeftReleased();
 	void State_Reset_QPushButton_MouseRightReleased();

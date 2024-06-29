@@ -40,12 +40,14 @@ void CMainWindow::ConfigReset() const
 		);
 	}
 	else
+    {
 		new CMessage
         (
 			"Error",
 			"Please Check File Permissions\n" + CCore::fileConfig,
             this
 		);
+    }
 }
 
 bool CMainWindow::ConfigLoad()
@@ -206,10 +208,12 @@ void CMainWindow::ConfigSave() const
 		config.close();
 	}
 	else
+    {
 		new CMessage
         (
 			"Error",
 			"Please Check File Permissions\n" + CCore::fileConfig,
             this
 		);
+    }
 }

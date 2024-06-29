@@ -42,15 +42,15 @@ CMainWindow::CMainWindow() :
 	srand(time(nullptr));
 	switch(CConfig::startSlots)
 	{
-	case CConfig::Slots::Random:
-		State_Random_QPushButton_MouseRightReleased();
-		break;
-	case CConfig::Slots::Empty:
-		State_Empty_QPushButton_MouseRightReleased();
-		break;
-	case CConfig::Slots::Custom:
-		Load_QPushButton_MouseLeftReleased(CConfig::colorCustom);
-		break;
+	    case CConfig::Slots::Random:
+	    	State_Random_QPushButton_MouseRightReleased();
+	    	break;
+	    case CConfig::Slots::Empty:
+	    	State_Empty_QPushButton_MouseRightReleased();
+	    	break;
+	    case CConfig::Slots::Custom:
+            State_Empty_QPushButton_MouseRightReleased(CConfig::colorCustom);
+	    	break;
 	}
 
 	Style_QWidget.setStyleSheet(CStyle::styleSheet);
