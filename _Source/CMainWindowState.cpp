@@ -747,7 +747,7 @@ void CMainWindow::State_Help_QAction_triggered() const
 {
 	new CMessage
     (
-		"Help",
+		"Color-Picker Help",
 		"Right-Click on the Pick button to select next slot before picking.\n"
 		"Middle-Click on the Pick button to select previous slot before picking.\n"
 		"\n"

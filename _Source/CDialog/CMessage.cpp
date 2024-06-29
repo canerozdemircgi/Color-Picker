@@ -17,10 +17,13 @@ CMessage::CMessage(const QString &__restrict__ title, const QString &__restrict_
 	setAccessibleName("QMain");
 	setWindowFlags(Qt::WindowType::FramelessWindowHint | Qt::WindowType::WindowStaysOnTopHint);
 
+    Title_QLabel.setGeometry(1, 1, 348, 29);
 	Title_QLabel.setIndent(38);
 	Title_QLabel.setFont(CStyle::fontTitle);
 	Title_QLabel.setText(title);
 
+    Icon_QLabel.setGeometry(2, 2, 27, 27);
+    Icon_QLabel.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 	Icon_QLabel.setPixmap(QPixmap(":/Logo/Color Picker.svg"));
 	Icon_QLabel.setAccessibleName("QLabelImage");
 	Close_QPushButton.setText("OK");
@@ -42,7 +45,6 @@ CMessage::CMessage(const QString &__restrict__ title, const QString &__restrict_
 
 	Title_QLabel.setGeometry(1, 1, sizeX0, 29);
 
-	Icon_QLabel.setGeometry(2, 2, 28, 27);
 	Close_QPushButton.setGeometry(sizeX - 90, sizeY - 35, 80, 25);
 
 	Message_QLabel.setGeometry(20, 50, sizeXMessage, sizeYMessage);

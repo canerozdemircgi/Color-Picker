@@ -43,7 +43,8 @@ CConfig::CConfig(const std::function<void(const int)> &__restrict__ state_FloatP
 	Title_QLabel.setFont(CStyle::fontTitle);
 	Title_QLabel.setText("Color-Picker Configuration");
 
-	Icon_QLabel.setGeometry(2, 2, 28, 27);
+	Icon_QLabel.setGeometry(2, 2, 27, 27);
+    Icon_QLabel.setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 	Icon_QLabel.setPixmap(QPixmap(":/Logo/Color Picker.svg"));
 	Icon_QLabel.setAccessibleName("QLabelImage");
 	Close_QPushButton.setGeometry(335, 2, 33, 27);
