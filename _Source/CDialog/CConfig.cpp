@@ -4,7 +4,6 @@
 #include "../CGeneral/CCore.h"
 #include "../CGeneral/CStyle.h"
 #include "../CInput/CDoubleSpinBox.h"
-#include "../CMacro/CSignal.h"
 
 #include <QtWidgets/QFileDialog>
 
