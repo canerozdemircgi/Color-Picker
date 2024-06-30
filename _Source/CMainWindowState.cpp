@@ -787,9 +787,9 @@ void CMainWindow::State_Simple_QPushButton_toggled(const bool checked)
 		Blocks_QWidget.setVisible(false);
 		Slots_QWidget.setVisible(false);
 
-		Simple_QPushButton.move(196, 2);
-		ATop_QPushButton.move(229, 2);
-		Minimize_QPushButton.move(262, 2);
+		Simple_QPushButton.move(193, 2);
+		ATop_QPushButton.move(227, 2);
+		Minimize_QPushButton.move(261, 2);
 		Close_QPushButton.move(295, 2);
 
 		Simple_QWidget.move(10, 40);
@@ -809,9 +809,9 @@ void CMainWindow::State_Simple_QPushButton_toggled(const bool checked)
 		Blocks_QWidget.setVisible(true);
 		Slots_QWidget.setVisible(true);
 
-		Simple_QPushButton.move(366, 2);
-		ATop_QPushButton.move(399, 2);
-		Minimize_QPushButton.move(432, 2);
+		Simple_QPushButton.move(363, 2);
+		ATop_QPushButton.move(397, 2);
+		Minimize_QPushButton.move(431, 2);
 		Close_QPushButton.move(465, 2);
 
 		Simple_QWidget.move(10, 160);
@@ -819,10 +819,10 @@ void CMainWindow::State_Simple_QPushButton_toggled(const bool checked)
 		SlotBack_QLabel.move(260, 390);
 		SlotMask_QLabel.move(260, 390);
 
-		Style_QWidget.resize(500, 620);
+		Style_QWidget.resize(500, 625);
 		QLineBorder_5.resize(498, 1);
 		Title_QLabel.resize(498, 29);
-		resize(500, 620);
+		resize(500, 625);
 	}
 }
 

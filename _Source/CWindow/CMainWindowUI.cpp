@@ -99,13 +99,13 @@ CMainWindowUI::CMainWindowUI() :
 {
 	QPoint center = QGuiApplication::screenAt(QCursor::pos())->geometry().center();
 	setGeometry(center.x() - 500 / 2,
-				center.y() - 620 / 2,
+				center.y() - 625 / 2,
 				500,
-				620);
+				625);
 
 	setWindowFlag(Qt::WindowType::FramelessWindowHint);
 
-	Style_QWidget.setGeometry(0, 0, 500, 620);
+	Style_QWidget.setGeometry(0, 0, 500, 625);
 	Style_QWidget.setAccessibleName("QMain");
 
 	Title_QLabel.setGeometry(1, 1, 498, 29);
@@ -333,25 +333,25 @@ CMainWindowUI::CMainWindowUI() :
 	Hex_QLineEdit.setAlignment(Qt::AlignmentFlag::AlignCenter);
     Hex_QLineEdit.setProperty("hasBottomBorderRadius", true);
 
-	Button_QWidget.setGeometry(10, 450, 480, 30);
-	Load_QPushButton.setGeometry(0, 10, 70, 20);
+	Button_QWidget.setGeometry(10, 450, 480, 35);
+	Load_QPushButton.setGeometry(0, 10, 70, 25);
 	Load_QPushButton.setText("Load");
-	Save_QPushButton.setGeometry(80, 10, 70, 20);
+	Save_QPushButton.setGeometry(80, 10, 70, 25);
 	Save_QPushButton.setText("Save");
-	Reset_QPushButton.setGeometry(160, 10, 70, 20);
+	Reset_QPushButton.setGeometry(160, 10, 70, 25);
 	Reset_QPushButton.setText("Reset");
-	Invert_QPushButton.setGeometry(250, 10, 70, 20);
+	Invert_QPushButton.setGeometry(250, 10, 70, 25);
 	Invert_QPushButton.setText("Invert");
-	Empty_QPushButton.setGeometry(330, 10, 70, 20);
+	Empty_QPushButton.setGeometry(330, 10, 70, 25);
 	Empty_QPushButton.setText("Empty");
-	Random_QPushButton.setGeometry(410, 10, 70, 20);
+	Random_QPushButton.setGeometry(410, 10, 70, 25);
 	Random_QPushButton.setText("Random");
 	QLine_3.setEnabled(false);
 	QLine_3.setGeometry(0, 0, 480, 1);
 	QLine_3.setFrameShadow(QFrame::Shadow::Plain);
 	QLine_3.setFrameShape(QFrame::Shape::HLine);
 	QLine_4.setEnabled(false);
-	QLine_4.setGeometry(239, 1, 1, 28);
+	QLine_4.setGeometry(239, 1, 1, 33);
 	QLine_4.setFrameShadow(QFrame::Shadow::Plain);
 	QLine_4.setFrameShape(QFrame::Shape::VLine);
 
@@ -360,7 +360,7 @@ CMainWindowUI::CMainWindowUI() :
 	QLineBorder_5.setFrameShape(QFrame::Shape::HLine);
 
 	Blocks_QWidget.setGeometry(330, 40, 160, 400);
-	Slots_QWidget.setGeometry(10, 490, 480, 120);
+	Slots_QWidget.setGeometry(10, 495, 480, 120);
 
 	SlotBack_QLabel.setGeometry(260, 390, 50, 50);
 	SlotBack_QLabel.setPixmap(QPixmap(":/Checker/Slot.svg"));
