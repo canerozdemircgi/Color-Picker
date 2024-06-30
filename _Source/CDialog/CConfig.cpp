@@ -69,7 +69,7 @@ CConfig::CConfig(const std::function<void(const int)> &__restrict__ state_FloatP
 	CustomSlot_QLineEdit.setGeometry(190, 40, 170, 20);
 	CustomSlot_QLineEdit.setTextMargins(0, 0, 19, 0);
 	CustomSlot_QLineEdit.setText(colorCustom);
-	CustomSlot_QPushButton.setGeometry(341, 41, 18, 18);
+	CustomSlot_QPushButton.setGeometry(345, 41, 14, 18);
 	CustomSlot_QPushButton.setIcon(QPixmap(":/Direction/Right.svg").scaled(6, 6, Qt::AspectRatioMode::IgnoreAspectRatio, Qt::TransformationMode::SmoothTransformation));
 
 	EmptyColor_QLabel.setGeometry(10, 70, 90, 20);
