@@ -658,12 +658,14 @@ void CMainWindow::Load_QPushButton_MouseLeftReleased(const QString &__restrict__
 		);
 	}
 	else
+    {
 		new CMessage
         (
 			"Error",
 			"Please Check File Permissions\n" + fileName,
             this
 		);
+    }
 }
 
 void CMainWindow::State_Save_QPushButton_MouseLeftReleased()
@@ -705,12 +707,14 @@ void CMainWindow::State_Save_QPushButton_MouseLeftReleased()
 		);
 	}
 	else
+    {
 		new CMessage
         (
 			"Error",
 			"Please Check File Permissions\n" + fileName,
             this
 		);
+    }
 }
 
 void CMainWindow::State_Reset_QPushButton_MouseLeftReleased()
