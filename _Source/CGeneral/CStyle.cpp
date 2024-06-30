@@ -322,13 +322,13 @@ border-radius: 2px;
 
 QMenu::icon
 {
-left: 5px;
+left: 9px;
 }
 
 QMenu::item
 {
 height: 25px;
-padding: 0 20px 0 10px;
+padding: 0 20px 0 11px;
 }
 
 QMenu::item:selected
