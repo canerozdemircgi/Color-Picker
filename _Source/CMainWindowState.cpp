@@ -251,12 +251,7 @@ void CMainWindow::State_Empty_QPushButton_MouseLeftReleased()
 
 void CMainWindow::State_Empty_QPushButton_MouseRightReleased()
 {
-    State_Empty_QPushButton_MouseRightReleased(CConfig::colorEmpty);
-}
-
-void CMainWindow::State_Empty_QPushButton_MouseRightReleased(const QString &__restrict__ hexadecimal = CConfig::colorEmpty)
-{
-	const QColor colorEmpty(hexadecimal);
+	const QColor colorEmpty(QColor(CConfig::colorEmpty));
 	for (int i = 0; i < slotSize; ++i)
 		slot[i]->SetColor(colorEmpty);
 	RefreshAll();
@@ -580,10 +575,13 @@ void CMainWindow::State_Hex_QLineEdit_returnPressed()
 void CMainWindow::State_Load_QPushButton_MouseLeftReleased()
 {
 	const QString fileName(QFileDialog::getOpenFileName(this, "Color File Load", nullptr, "Color Files (*.clr)"));
-	if (fileName == nullptr)
-		return;
+	if (fileName != nullptr)
+		Load_QPushButton_MouseLeftReleased(fileName);
+}
 
-    QFile colorLoad(fileName);
+void CMainWindow::Load_QPushButton_MouseLeftReleased(const QString &__restrict__ fileName)
+{
+	QFile colorLoad(fileName);
 	if (colorLoad.open(QIODevice::OpenModeFlag::ReadOnly))
 	{
 		QTextStream stream(&colorLoad);
@@ -660,14 +658,12 @@ void CMainWindow::State_Load_QPushButton_MouseLeftReleased()
 		);
 	}
 	else
-    {
 		new CMessage
         (
 			"Error",
 			"Please Check File Permissions\n" + fileName,
             this
 		);
-    }
 }
 
 void CMainWindow::State_Save_QPushButton_MouseLeftReleased()
@@ -709,14 +705,12 @@ void CMainWindow::State_Save_QPushButton_MouseLeftReleased()
 		);
 	}
 	else
-    {
 		new CMessage
         (
 			"Error",
 			"Please Check File Permissions\n" + fileName,
             this
 		);
-    }
 }
 
 void CMainWindow::State_Reset_QPushButton_MouseLeftReleased()

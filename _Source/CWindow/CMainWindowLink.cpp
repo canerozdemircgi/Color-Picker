@@ -79,7 +79,7 @@ void CMainWindow::LinkStateStatic()
 	Invert_QPushButton.MouseLeftReleased = std::bind(&CMainWindow::State_Invert_QPushButton_MouseLeftReleased, this);
 	Invert_QPushButton.MouseRightReleased = std::bind(&CMainWindow::State_Invert_QPushButton_MouseRightReleased, this);
 	Empty_QPushButton.MouseLeftReleased = std::bind(&CMainWindow::State_Empty_QPushButton_MouseLeftReleased, this);
-	Empty_QPushButton.MouseRightReleased = std::bind(static_cast<void(CMainWindow::*)()>(&CMainWindow::State_Empty_QPushButton_MouseRightReleased), this);
+	Empty_QPushButton.MouseRightReleased = std::bind(&CMainWindow::State_Empty_QPushButton_MouseRightReleased, this);
 	Random_QPushButton.MouseLeftReleased = std::bind(&CMainWindow::State_Random_QPushButton_MouseLeftReleased, this);
 	Random_QPushButton.MouseRightReleased = std::bind(&CMainWindow::State_Random_QPushButton_MouseRightReleased, this);
 	Random_QPushButton.MouseMiddleReleased = std::bind(&CMainWindow::State_Random_QPushButton_MouseMiddleReleased, this);
