@@ -1,0 +1,7 @@
+<RCC>
+	<qresource prefix="/Target">
+		<file>Cross-Black.svg</file>
+		<file>Cross-White.svg</file>
+		<file>Mask.svg</file>
+	</qresource>
+</RCC>
