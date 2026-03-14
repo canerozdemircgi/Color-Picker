@@ -1,0 +1,44 @@
+qt string ile bytearray için xxxview
+
+data yapılarında insert, emplace, append, <<, push vs vs kontrol
+std::array
+std::pair
+std::string
+std::span
+std::vector
+---
+QList
+QHash
+QCache
+---
+boost::optional
+boost::json
+
+button->setIconSize(QSize(14, 14)); ==> button->setIconSize({14, 14}); // .*\(.*\(.*\).*\)
+herşeyin referans bazında kontrolü yani misal size() QSize referans dönüyor olabilir
+
+wheelEvent entegrasyonu
+wheel ile slot değişmesi
+--
+j += event->angleDelta().y() > 0 ? -1 : 1;
+if (j < 0)
+{
+	j = this->columns - 1;
+	if (--i < 0)
+		i = this->rows - 1;
+}
+else if (j >= this->columns)
+{
+	j = 0;
+	if (++i >= this->rows)
+		i = 0;
+}
+--
+
+std => boost
+
+noexcept for every signature and lambda and even pointers
+[[nodiscard]]
+method parameters always const
+
+-march=x86-64-v3 all

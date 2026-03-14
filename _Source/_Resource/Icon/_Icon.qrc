@@ -1,0 +1,7 @@
+<RCC>
+	<qresource prefix="/Icon">
+		<file>Theme/index.theme</file>
+		<file>Theme/scalable/edit-copy.svg</file>
+		<file>Theme/scalable/edit-select-all.svg</file>
+	</qresource>
+</RCC>

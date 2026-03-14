@@ -1,0 +1,6 @@
+*.bin
+*.exe
+*.ico
+*.ninja_deps
+*.obj
+*.ttf

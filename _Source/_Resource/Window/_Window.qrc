@@ -1,0 +1,10 @@
+<RCC>
+	<qresource prefix="/Window">
+		<file>About.svg</file>
+		<file>Settings.svg</file>
+		<file>Help.svg</file>
+
+		<file>Info.svg</file>
+		<file>Warning.svg</file>
+	</qresource>
+</RCC>

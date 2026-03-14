@@ -1,0 +1,5 @@
+<RCC>
+	<qresource prefix="/Logo">
+		<file>Color Picker.svg</file>
+	</qresource>
+</RCC>
