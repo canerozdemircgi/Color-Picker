@@ -9,10 +9,10 @@ int main(int argc, char** const argv)
 {
 	CPlatform::setProcessPriority(CPlatform::Priority::HIGH);
 
-	QApplication application(argc, argv);
+	QApplication application{argc, argv};
 	CStyle::initialize(&application);
 
-	CWindowMain mainWindow(nullptr);
+	CWindowMain mainWindow{nullptr};
 	CConfiguration::initialize(&mainWindow);
 
 	#ifdef _WIN32

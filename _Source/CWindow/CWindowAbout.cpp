@@ -7,17 +7,17 @@
 #include <opencv2/core/version.hpp>
 
 CWindowAbout::CWindowAbout(QWidget* const parent) :
-	CDialogOk(parent, {.windowType = Qt::WindowType::SubWindow, .title = u"About"_s, .dispose = false})
+	CDialogOk{parent, {.windowType = Qt::WindowType::SubWindow, .title = u"About"_s, .dispose = false}}
 {
-	const QString versionBlank(u"x.x.x"_s);
+	const QString versionBlank{u"x.x.x"_s};
 
 	const QString content = CFile::readFile<QString>(u":/Html/About.html"_s).remove('\n');
 	this->setContent(content.arg(versionBlank, versionBlank, versionBlank, versionBlank), true);
 
 	QMetaObject::invokeMethod(this, [this](const QString& content, const QString& versionBlank)
 	{
-		const QStringView versionQt = QStringLiteral(QT_VERSION_STR);
-		const QStringView versionOpenCv = QStringLiteral(CV_VERSION);
+		const QStringView versionQt{QStringLiteral(QT_VERSION_STR)};
+		const QStringView versionOpenCv{QStringLiteral(CV_VERSION)};
 		const QString versionLocal = CFile::readFile<QString>(u":/Other/version.txt"_s);
 
 		this->setContent(content.arg(versionQt, versionOpenCv, versionLocal, versionBlank));

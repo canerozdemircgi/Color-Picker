@@ -14,9 +14,9 @@ namespace
 
 const QString path(u":/Checker/Slot.svg"_s);
 
-QCache<const QString, QPixmap> CACHE_PIXMAP_CHECKER(4);
-QCache<const QString, QPixmap> CACHE_PIXMAP_TARGET(8);
-QCache<const QString, QPixmap> CACHE_PIXMAP_MASK(4);
+QCache<const QString, const QPixmap> CACHE_PIXMAP_CHECKER(4);
+QCache<const QString, const QPixmap> CACHE_PIXMAP_TARGET(8);
+QCache<const QString, const QPixmap> CACHE_PIXMAP_MASK(4);
 
 }
 

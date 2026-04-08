@@ -24,7 +24,7 @@ public:
 	{
 		mutable QByteArray color;
 
-		QCache<const QString, QPixmap>* const cachePixmap = nullptr;
+		QCache<const QString, const QPixmap>* const cachePixmap = nullptr;
 		mutable std::span<const QByteArray> cacheColors;
 	};
 	struct ParametersBase /*final*/ : public CSvg::ParametersBasic, CSvg::ParametersExtended {};

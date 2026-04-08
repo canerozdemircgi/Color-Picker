@@ -10,9 +10,9 @@
 QPixmap CSvg::createPixmap(const CSvg::Parameters& parameters)
 {
 	static QHash<const QString, QByteArray> CACHE_FILE;
-	static QCache<const QString, QPixmap> CACHE_PIXMAP(64);
+	static QCache<const QString, const QPixmap> CACHE_PIXMAP(64);
 
-	QCache<const QString, QPixmap>& cachePixmap = parameters.cachePixmap ? *parameters.cachePixmap : CACHE_PIXMAP;
+	QCache<const QString, const QPixmap>& cachePixmap = parameters.cachePixmap ? *parameters.cachePixmap : CACHE_PIXMAP;
 
 	const QString key = QString::asprintf("%s;%d;%d;%d;%s", qUtf8Printable(*parameters.path), *parameters.width, *parameters.height, parameters.keepAspectRatio, qUtf8Printable(parameters.color));
 	if (cachePixmap.contains(key))

@@ -5,7 +5,7 @@
 class CLabelTarget final : public CLabelSvg
 {
 public:
-	explicit CLabelTarget(QWidget* const parent, QCache<const QString, QPixmap>* const cachePixmap = nullptr);
+	explicit CLabelTarget(QWidget* const parent, QCache<const QString, const QPixmap>* const cachePixmap = nullptr);
 
 	void setVisible(bool visible) override;
 };
