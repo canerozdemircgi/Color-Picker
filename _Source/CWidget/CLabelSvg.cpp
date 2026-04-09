@@ -1,9 +1,9 @@
 #include "CLabelSvg.hpp"
 
 CLabelSvg::CLabelSvg(QWidget* const parent, CSvg::ParametersBase&& parameters) :
-	QLabel(parent),
+	QLabel{parent},
 
-	parameters(std::move(parameters))
+	parameters{std::move(parameters)}
 {
 	this->setProperty("hasNoBackground", true);
 }

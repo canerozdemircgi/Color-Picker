@@ -5,12 +5,12 @@ using namespace Qt::Literals::StringLiterals;
 namespace
 {
 
-const QString path(u":/Target/Mask.svg"_s);
+const QString path{u":/Target/Mask.svg"_s};
 
 }
 
 CLabelMask::CLabelMask(QWidget* const parent, CSvg::ParametersExtended&& parameters) :
-	CLabelSvg(parent, {{.path = path, .keepAspectRatio = false}, std::move(parameters)})
+	CLabelSvg{parent, {{.path = path, .keepAspectRatio = false}, std::move(parameters)}}
 {
 }
 
