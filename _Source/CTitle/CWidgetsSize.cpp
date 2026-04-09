@@ -5,13 +5,13 @@
 #include <QtGui/QWindow>
 
 CWidgetsSize::CWidgetsSize(QWidget* const parent) :
-	QWidget(parent),
+	QWidget{parent},
 
 	instances
-	({
+	{{
 		new CWidgetSize(parent, CWidgetSize::Direction::BOTTOM_LEFT),
 		new CWidgetSize(parent, CWidgetSize::Direction::BOTTOM_RIGHT)
-	})
+	}}
 {
 	this->setEnabled(false);
 	this->setFixedSize(0, 0);
