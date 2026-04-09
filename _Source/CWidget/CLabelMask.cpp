@@ -16,7 +16,7 @@ CLabelMask::CLabelMask(QWidget* const parent, CSvg::ParametersExtended&& paramet
 
 void CLabelMask::enterEvent(QEnterEvent* const event)
 {
-	this->pixmapOriginal = this->pixmap();
+	this->pixmapOriginal = std::move(this->pixmap());
 	this->setPixmap({});
 
 	CLabelSvg::enterEvent(event);
