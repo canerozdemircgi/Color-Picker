@@ -8,7 +8,7 @@ CLabelSvg::CLabelSvg(QWidget* const parent, CSvg::ParametersBase&& parameters) :
 	this->setProperty("hasNoBackground", true);
 }
 
-void CLabelSvg::setColor(QByteArray color)
+void CLabelSvg::setColor(QByteArray color) const
 {
 	parameters.color = std::move(color);
 }

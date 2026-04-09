@@ -9,9 +9,9 @@ class CLabelSvg /*final*/ : public QLabel
 public:
 	explicit CLabelSvg(QWidget* const parent, CSvg::ParametersBase&& parameters);
 
-	void setColor(QByteArray color);
-
 protected:
+	void setColor(QByteArray color) const;
+
 	void resizeEvent(QResizeEvent* const event) override;
 
 private:
