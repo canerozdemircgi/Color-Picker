@@ -33,9 +33,10 @@ CWidgetSize::CWidgetSize(QWidget* const parent, const CWidgetSize::Direction& di
 	active{false}
 {
 	this->setProperty("hasNoBackground", true);
-	this->setAccessibleName(u"CWidgetSize%1"_s.arg(direction.name));
 
+	this->setAccessibleName(u"CWidgetSize%1"_s.arg(direction.name));
 	this->setCursor(this->direction.cursor);
+
 	this->setFixedSize(15, 15);
 }
 
