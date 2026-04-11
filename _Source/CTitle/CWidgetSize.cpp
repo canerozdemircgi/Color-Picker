@@ -27,10 +27,10 @@ const CWidgetSize::Direction CWidgetSize::Direction::BOTTOM_RIGHT =
 };
 
 CWidgetSize::CWidgetSize(QWidget* const parent, const CWidgetSize::Direction& direction) :
-	QWidget(parent),
+	QWidget{parent},
 
-	direction(direction),
-	active(false)
+	direction{direction},
+	active{false}
 {
 	this->setProperty("hasNoBackground", true);
 	this->setAccessibleName(u"CWidgetSize%1"_s.arg(direction.name));
