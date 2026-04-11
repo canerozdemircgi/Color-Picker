@@ -4,7 +4,7 @@
 
 class CWidgetSize;
 
-class CWidgetsSize final : public QWidget
+class CWidgetsSize final : private QWidget
 {
 public:
 	explicit CWidgetsSize(QWidget* const parent);
