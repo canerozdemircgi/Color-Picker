@@ -14,7 +14,7 @@ public:
 
 private:
 	const Ui::CWindowMain* const ui;
-	CPushButtonSta* const SimpleMode_PushButton;
+	CPushButtonSta& SimpleMode_PushButton;
 
 	void showEvent(QShowEvent* const event) override;
 	bool eventFilter(QObject* const object, QEvent* const event) override;

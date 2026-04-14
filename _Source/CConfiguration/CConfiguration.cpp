@@ -25,7 +25,7 @@ void CConfiguration::initialize(CWindowMain* const mainWindow)
 				.titleBar =
 				{
 					.atop = mainWindow->ui->TitleBar->ui->ATop_PushButton->isChecked(),
-					.simple = mainWindow->SimpleMode_PushButton->isChecked(),
+					.simple = mainWindow->SimpleMode_PushButton.isChecked(),
 					.maximize = mainWindow->ui->TitleBar->ui->Maximize_PushButton->isChecked()
 				},
 
@@ -74,7 +74,7 @@ void CConfiguration::refresh(CWindowMain* const mainWindow, bool reset)
 
 	mainWindow->ui->ColorSlots->initialize(data.mainWindow.colorSlots.columns, data.mainWindow.colorSlots.rows, data.mainWindow.colorSlots.x, data.mainWindow.colorSlots.y);
 
-	mainWindow->SimpleMode_PushButton->setChecked(data.mainWindow.titleBar.simple);
+	mainWindow->SimpleMode_PushButton.setChecked(data.mainWindow.titleBar.simple);
 	mainWindow->ui->TitleBar->ui->ATop_PushButton->setChecked(data.mainWindow.titleBar.atop);
 
 	const QRect rectAllScreens = CGui::availableGeometryAllScreens();

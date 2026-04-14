@@ -15,7 +15,7 @@ CTitleBar::CTitleBar(QWidget* const parent) :
 
 	ui(CUi::newUi<Ui::CTitleBar>(this)),
 	menu(nullptr),
-	sizeWidgets(new CWidgetsSize(parent))
+	sizeWidgets(*(new CWidgetsSize(parent)))
 {
 	CGui::makeFrameless(parent->parentWidget());
 }
@@ -108,7 +108,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 				this->ui->Maximize_PushButton->setIcon(NORMALIZE_ICON);
 				this->ui->Maximize_PushButton->setToolTip(u"Normalize"_s);
 
-				this->sizeWidgets->setVisible(false);
+				this->sizeWidgets.setVisible(false);
 			}
 			else
 			{
@@ -121,7 +121,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 				this->ui->Maximize_PushButton->setIcon(MAXIMIZE_ICON);
 				this->ui->Maximize_PushButton->setToolTip(u"Maximize"_s);
 
-				this->sizeWidgets->setVisible(true);
+				this->sizeWidgets.setVisible(true);
 			}
 		});
 		this->ui->Title_Widget->setMouseDoubleClicked([this]
@@ -146,7 +146,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 		this->window()->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose);
 }
 
-CPushButtonSta* CTitleBar::addControlButton(const QString& icon, const QString& tooltip, uint8_t index, bool checkable, const QString& tooltipChecked) const
+CPushButtonSta& CTitleBar::addControlButton(const QString& icon, const QString& tooltip, uint8_t index, bool checkable, const QString& tooltipChecked) const
 {
 	CPushButtonSta* const button = new CPushButtonSta(this->ui->Control_Widget);
 	button->setSizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
@@ -165,7 +165,7 @@ CPushButtonSta* CTitleBar::addControlButton(const QString& icon, const QString& 
 		});
 	}
 
-	return button;
+	return *button;
 }
 
 QRect CTitleBar::getGeometry() const

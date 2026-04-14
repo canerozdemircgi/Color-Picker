@@ -40,12 +40,12 @@ public:
 
 	template <CLambda::CCallable<void> Function>
 	void addMenuAction(const QString& icon, const QString& text, Function&& function) const;
-	CPushButtonSta* addControlButton(const QString& icon, const QString& tooltip, uint8_t index = 0u, bool checkable = false, const QString& tooltipChecked = u""_s) const;
+	CPushButtonSta& addControlButton(const QString& icon, const QString& tooltip, uint8_t index = 0u, bool checkable = false, const QString& tooltipChecked = u""_s) const;
 
 private:
 	const Ui::CTitleBar* const ui;
 	CMenu* menu;
-	CWidgetsSize* const sizeWidgets;
+	CWidgetsSize& sizeWidgets;
 
 	QRect geometryOriginal;
 	QRect getGeometry() const;
