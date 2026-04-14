@@ -65,8 +65,8 @@ void CWidgetSize::mouseMoveEvent(QMouseEvent* const event)
 
 void CWidgetSize::mouseReleaseEvent(QMouseEvent* const event)
 {
-	QWidget::mouseReleaseEvent(event);
-
 	if (this->active)
 		this->active = false;
+
+	QWidget::mouseReleaseEvent(event);
 }

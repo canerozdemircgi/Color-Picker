@@ -5,9 +5,9 @@
 using namespace Qt::Literals::StringLiterals;
 
 CWidgetMove::CWidgetMove(QWidget* const parent) :
-	QWidget(parent),
+	QWidget{parent},
 
-	active(false)
+	active{false}
 {
 	this->setAccessibleName(u"CWidgetMove"_s);
 }
@@ -25,10 +25,10 @@ void CWidgetMove::mouseMoveEvent(QMouseEvent* const event)
 
 void CWidgetMove::mouseReleaseEvent(QMouseEvent* const event)
 {
-	QWidget::mouseReleaseEvent(event);
-
 	if (this->active)
 		this->active = false;
+
+	QWidget::mouseReleaseEvent(event);
 }
 
 void CWidgetMove::mouseDoubleClickEvent(QMouseEvent* const event)
