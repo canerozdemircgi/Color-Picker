@@ -15,7 +15,7 @@
 CWindowMain::CWindowMain(QWidget* const parent) :
 	QWidget{parent},
 
-	ui{CUi::newUi<Ui::CWindowMain>(this, {.windowType = Qt::WindowType::Window, .menu = CMenu::Parameters{}, .title = u"Color Picker by canerozdemircgi"_s, .atop = true, .dispose = false})},
+	ui{CUi::newUi<Ui::CWindowMain>(this, {.windowType = Qt::WindowType::Window, .menu = CMenu::Parameters{}, .title = u"Color-Picker by canerozdemircgi"_s, .atop = true, .dispose = false})},
 	SimpleMode_PushButton{this->ui->TitleBar->addControlButton(u":/Button/Star.svg"_s, u"Simple Mode"_s, 1u, true, u"Advanced Mode"_s)}
 {
 	this->ui->TitleBar->addMenuAction(u":/Window/Settings.svg"_s, u"Settings"_s, []{});

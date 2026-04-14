@@ -26,7 +26,7 @@ CTitleBar::~CTitleBar()
 
 void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 {
-	static const QIcon MENU_ICON(u":/Logo/Color Picker.svg"_s);
+	static const QIcon MENU_ICON(u":/Logo/ColorPicker.svg"_s);
 	static const QIcon MAXIMIZE_ICON(u":/Direction/Up.svg"_s);
 	static const QIcon NORMALIZE_ICON(u":/Direction/Down.svg"_s);
 

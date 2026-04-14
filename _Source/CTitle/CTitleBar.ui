@@ -42,7 +42,7 @@
      </property>
      <property name="icon">
       <iconset resource="../_Resource/Logo/_Logo.qrc">
-       <normaloff>:/Logo/Color Picker.svg</normaloff>:/Logo/Color Picker.svg</iconset>
+       <normaloff>:/Logo/ColorPicker.svg</normaloff>:/Logo/ColorPicker.svg</iconset>
      </property>
      <property name="iconSize">
       <size>
