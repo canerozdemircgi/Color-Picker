@@ -4,7 +4,6 @@
 #include "ui_CTitleBar.h"
 
 #include "CGui/CSvg.hpp"
-#include "CMenu/CMenu.hpp"
 
 template <CLambda::CCallable<void> Function>
 void CTitleBar::addMenuAction(const QString& icon, const QString& text, Function&& function) const
