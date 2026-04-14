@@ -10,11 +10,11 @@
 #include <QtGui/QWindow>
 
 CTitleBar::CTitleBar(QWidget* const parent) :
-	QWidget(parent),
+	QWidget{parent},
 
-	ui(CUi::newUi<Ui::CTitleBar>(this)),
-	menu(nullptr),
-	sizeWidgets(*(new CWidgetsSize(parent)))
+	ui{CUi::newUi<Ui::CTitleBar>(this)},
+	menu{nullptr},
+	sizeWidgets{*(new CWidgetsSize(parent))}
 {
 	CGui::makeFrameless(parent->parentWidget());
 }
@@ -91,7 +91,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 
 		this->ui->Maximize_PushButton->setMouseReleased([this]
 		{
-			if (this->geometryOriginal.isEmpty())
+			if (this->ui->Maximize_PushButton->isChecked())
 			{
 				if (this->window()->windowHandle())
 				{
@@ -150,8 +150,8 @@ CPushButtonSta& CTitleBar::addControlButton(const QString& icon, const QString& 
 	CPushButtonSta* const button = new CPushButtonSta(this->ui->Control_Widget);
 	button->setSizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
 	button->setMinimumSize(30, 30);
-	button->setIcon(QIcon(icon));
-	button->setIconSize(QSize(14, 14));
+	button->setIcon(QIcon{icon});
+	button->setIconSize({14, 14});
 	button->setToolTip(tooltip);
 	button->setCheckable(checkable);
 	this->ui->Control_Widget_Layout->insertWidget(index, button);
