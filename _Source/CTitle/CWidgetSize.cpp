@@ -9,9 +9,9 @@ const CWidgetSize::Direction CWidgetSize::Direction::BOTTOM_LEFT =
 	u"BottomLeft"_s,
 	Qt::Edge::BottomEdge | Qt::Edge::LeftEdge,
 	Qt::CursorShape::SizeBDiagCursor,
-	[](QWidget* const widget)
+	[](QWidget& widget)
 	{
-		widget->move(QPoint(0, widget->window()->windowHandle()->height() - widget->height()));
+		widget.move(QPoint(0, widget.window()->windowHandle()->height() - widget.height()));
 	}
 };
 
@@ -20,9 +20,9 @@ const CWidgetSize::Direction CWidgetSize::Direction::BOTTOM_RIGHT =
 	u"BottomRight"_s,
 	Qt::Edge::BottomEdge | Qt::Edge::RightEdge,
 	Qt::CursorShape::SizeFDiagCursor,
-	[](QWidget* const widget)
+	[](QWidget& widget)
 	{
-		widget->move(QPoint(widget->window()->windowHandle()->width() - widget->width(), widget->window()->windowHandle()->height() - widget->height()));
+		widget.move(QPoint(widget.window()->windowHandle()->width() - widget.width(), widget.window()->windowHandle()->height() - widget.height()));
 	}
 };
 
@@ -42,7 +42,7 @@ CWidgetSize::CWidgetSize(QWidget* const parent, const CWidgetSize::Direction& di
 
 void CWidgetSize::move()
 {
-	this->direction.move(this);
+	this->direction.move(*this);
 }
 
 void CWidgetSize::showEvent(QShowEvent* const event)

@@ -27,7 +27,7 @@ public:
 		const boost::optional<const QIcon&> icon;
 		const std::optional<const CMenu::Parameters> menu;
 
-		const cstd::required<const QString> title;
+		const cstd::required<const QString&> title;
 
 		const bool atop = false;
 		const bool minimize = true;

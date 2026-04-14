@@ -15,7 +15,7 @@ public:
 		const Qt::Edges edges;
 		const Qt::CursorShape cursor;
 
-		void (* const move)(QWidget* const widget);
+		void (* const move)(QWidget& widget);
 
 	// friend class CWidgetSize;
 	// friend class CWidgetsSize;

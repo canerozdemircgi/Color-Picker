@@ -14,7 +14,7 @@ public:
 		const cstd::required<const Qt::WindowType> windowType;
 		const boost::optional<const QIcon&> icon;
 
-		const cstd::required<const QString> title;
+		const cstd::required<const QString&> title;
 
 		const bool dispose = true;
 	};
