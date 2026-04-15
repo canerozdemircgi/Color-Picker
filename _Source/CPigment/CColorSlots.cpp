@@ -1,7 +1,5 @@
 #include "CColorSlots.hpp"
 
-#include <qevent.h>
-
 #include "CGui/CColor.hpp"
 #include "CPigment/CColorSlot.hpp"
 
