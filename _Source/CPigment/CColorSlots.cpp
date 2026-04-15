@@ -3,6 +3,7 @@
 #include "CGui/CColor.hpp"
 #include "CPigment/CColorSlot.hpp"
 
+#include <QtGui/QWheelEvent>
 #include <QtWidgets/QHBoxLayout>
 
 CColorSlots::CColorSlots(QWidget* const parent) :
