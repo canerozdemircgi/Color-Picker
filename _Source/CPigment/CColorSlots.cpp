@@ -6,10 +6,10 @@
 #include <QtWidgets/QHBoxLayout>
 
 CColorSlots::CColorSlots(QWidget* const parent) :
-	QWidget(parent),
+	QWidget{parent},
 
-	columns(0u),
-	rows(0u)
+	columns{0u},
+	rows{0u}
 {
 }
 
