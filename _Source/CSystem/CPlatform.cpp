@@ -4,11 +4,11 @@
 #include <windef.h>
 #include <winbase.h>
 #include <winuser.h>
-#endif
 
 #include <QtCore/QAbstractNativeEventFilter>
 #include <QtCore/QCoreApplication>
 #include <QtWidgets/QWidget>
+#endif
 
 // TODO: implement linux counterpart
 void CPlatform::setProcessPriority(CPlatform::Priority priority)
