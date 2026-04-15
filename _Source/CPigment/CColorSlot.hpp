@@ -13,10 +13,11 @@ public:
 	void setBackgroundColor(const QColor& color) const;
 	void select() const;
 
+	static const CColorSlot* getSelection();
+	const std::pair<const uint8_t, const uint8_t> xy;
+
 private:
 	static const CColorSlot* SELECTION;
-
-	const std::pair<const uint8_t, const uint8_t> xy;
 
 	QWidget* const Color_Widget;
 	CLabelTarget* const Target_Label;

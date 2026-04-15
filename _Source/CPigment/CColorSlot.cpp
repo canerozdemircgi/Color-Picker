@@ -9,6 +9,11 @@ using namespace Qt::Literals::StringLiterals;
 
 const CColorSlot* CColorSlot::SELECTION;
 
+const CColorSlot* CColorSlot::getSelection()
+{
+	return CColorSlot::SELECTION;
+}
+
 namespace
 {
 

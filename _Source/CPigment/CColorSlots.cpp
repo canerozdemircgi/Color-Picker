@@ -1,5 +1,7 @@
 #include "CColorSlots.hpp"
 
+#include <qevent.h>
+
 #include "CGui/CColor.hpp"
 #include "CPigment/CColorSlot.hpp"
 
@@ -101,6 +103,23 @@ const CColorSlot* CColorSlots::createColorSlot(QWidget* const parent, std::pair<
 
 void CColorSlots::wheelEvent(QWheelEvent* const event)
 {
-	// const auto [i, j] = CColorSlot::SELECTION;
+	int16_t x = static_cast<int16_t>(CColorSlot::getSelection()->xy.first);
+	int16_t y = static_cast<int16_t>(CColorSlot::getSelection()->xy.second);
+
+	x += event->angleDelta().y() > 0 ? -1 : 1;
+	if (x < 0)
+	{
+		x = this->columns - 1;
+		if (--y < 0)
+			y = this->rows - 1;
+	}
+	else if (x >= this->columns)
+	{
+		x = 0;
+		if (++y >= this->rows)
+			y = 0;
+	}
+	this->instances[y][x]->select();
+
 	QWidget::wheelEvent(event);
 }
