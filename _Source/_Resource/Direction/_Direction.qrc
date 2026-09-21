@@ -1,0 +1,8 @@
+<RCC>
+	<qresource prefix="/Direction">
+		<file>Down.svg</file>
+		<file>Left.svg</file>
+		<file>Right.svg</file>
+		<file>Up.svg</file>
+	</qresource>
+</RCC>

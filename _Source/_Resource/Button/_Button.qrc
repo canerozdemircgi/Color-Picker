@@ -1,0 +1,8 @@
+<RCC>
+	<qresource prefix="/Button">
+		<file>Check.svg</file>
+		<file>Radio.svg</file>
+		<file>Spiral.svg</file>
+		<file>Star.svg</file>
+	</qresource>
+</RCC>

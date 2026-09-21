@@ -1,0 +1,27 @@
+svg rotatio implementation
+qt string ile bytearray için xxxview
+
+data yapılarında insert, emplace, append, <<, push vs vs kontrol
+std::array
+std::pair
+std::string
+std::span
+std::vector
+---
+QList
+QHash
+QCache
+---
+boost::optional
+boost::json
+
+button->setIconSize(QSize(14, 14)); ==> button->setIconSize({14, 14}); // .*\(.*\(.*\).*\)
+herşeyin referans bazında kontrolü yani misal size() QSize referans dönüyor olabilir
+
+std => boost
+
+noexcept for every signature and lambda and even pointers
+[[nodiscard]]
+method parameters always const
+
+-march=x86-64-v3 all

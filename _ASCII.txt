@@ -1,0 +1,17 @@
+*.cpp
+*.editorconfig
+*.gitignore
+*.hpp
+*.html
+*.json
+*.md
+*.nojekyll
+*.qrc
+*.qss
+*.rc
+*.svg
+*.theme
+*.tpp
+*.txt
+*.ui
+*.url

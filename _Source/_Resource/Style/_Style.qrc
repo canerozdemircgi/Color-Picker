@@ -1,0 +1,5 @@
+<RCC>
+	<qresource prefix="/Style">
+		<file>Color-Picker.qss</file>
+	</qresource>
+</RCC>

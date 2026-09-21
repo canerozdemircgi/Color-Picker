@@ -1,0 +1,5 @@
+<RCC>
+	<qresource prefix="/Other">
+		<file>version.txt</file>
+	</qresource>
+</RCC>
