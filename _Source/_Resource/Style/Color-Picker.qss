@@ -90,7 +90,6 @@ QMenu
 QMenu[accessibleName="CMenu"]
 {
 	border-top: 0 none transparent;
-	border-left: 0 none transparent;
 
 	border-radius: 0;
 	border-bottom-right-radius: 2px;
