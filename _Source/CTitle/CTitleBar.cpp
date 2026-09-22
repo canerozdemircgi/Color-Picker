@@ -96,15 +96,16 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 		{
 			if (this->ui->Maximize_PushButton->isChecked())
 			{
+				const QRect geometry = CGui::availableGeometryCurrentScreen() + QMargins(6, 6, 6, 6);
 				if (this->window()->windowHandle())
 				{
 					this->geometryOriginal = this->window()->windowHandle()->geometry();
-					this->window()->windowHandle()->setGeometry(CGui::availableGeometryCurrentScreen());
+					this->window()->windowHandle()->setGeometry(geometry);
 				}
 				else
 				{
 					this->geometryOriginal = this->window()->geometry();
-					this->window()->setGeometry(CGui::availableGeometryCurrentScreen());
+					this->window()->setGeometry(geometry);
 				}
 
 				this->ui->Maximize_PushButton->setIcon(NORMALIZE_ICON);

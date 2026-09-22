@@ -8,6 +8,12 @@ public:
 	class Direction final
 	{
 	public:
+		static const Direction TOP;
+		static const Direction BOTTOM;
+		static const Direction LEFT;
+		static const Direction RIGHT;
+		static const Direction TOP_LEFT;
+		static const Direction TOP_RIGHT;
 		static const Direction BOTTOM_LEFT;
 		static const Direction BOTTOM_RIGHT;
 

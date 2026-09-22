@@ -9,6 +9,12 @@ CWidgetsSize::CWidgetsSize(QWidget* const parent) :
 
 	instances
 	{{
+		new CWidgetSize(parent, CWidgetSize::Direction::TOP),
+		new CWidgetSize(parent, CWidgetSize::Direction::BOTTOM),
+		new CWidgetSize(parent, CWidgetSize::Direction::LEFT),
+		new CWidgetSize(parent, CWidgetSize::Direction::RIGHT),
+		new CWidgetSize(parent, CWidgetSize::Direction::TOP_LEFT),
+		new CWidgetSize(parent, CWidgetSize::Direction::TOP_RIGHT),
 		new CWidgetSize(parent, CWidgetSize::Direction::BOTTOM_LEFT),
 		new CWidgetSize(parent, CWidgetSize::Direction::BOTTOM_RIGHT)
 	}}

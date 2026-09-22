@@ -12,6 +12,8 @@ CDialogOkCancelApply::CDialogOkCancelApply(QWidget* const parent, const CDialogO
 
 	ui(CUi::newUi<Ui::CDialogOkCancelApply>(this, {.windowType = parameters.windowType, .icon = parameters.icon, .title = parameters.title, .minimize = false, .dispose = parameters.dispose}))
 {
+	this->ui->Main_Widget->setProperty("hasNoBackground", true);
+
 	if (!parameters.buttons)
 		this->ui->Bottom_Widget->setVisible(false);
 

@@ -33,19 +33,19 @@
     <widget class="QWidget" name="Main_Widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="spacing">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="leftMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="bottomMargin">
-       <number>0</number>
+       <number>6</number>
       </property>
       <item>
        <widget class="CTitleBar" name="TitleBar" native="true">
@@ -76,7 +76,7 @@
           <number>3</number>
          </property>
          <property name="topMargin">
-          <number>0</number>
+          <number>2</number>
          </property>
          <property name="rightMargin">
           <number>3</number>
@@ -199,15 +199,15 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>CPushButtonSta</class>
+   <extends>QPushButton</extends>
+   <header>CWidget/CPushButtonSta.hpp</header>
+  </customwidget>
+  <customwidget>
    <class>CTitleBar</class>
    <extends>QWidget</extends>
    <header>CTitle/CTitleBar.hpp</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>CPushButtonSta</class>
-   <extends>QPushButton</extends>
-   <header>CWidget/CPushButtonSta.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

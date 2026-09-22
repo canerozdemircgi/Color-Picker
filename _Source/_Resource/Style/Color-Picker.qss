@@ -35,16 +35,48 @@ QWidget[accessibleName="CWidgetMove"]
 	border-bottom: 1px solid #d0d0d0;
 }
 
+QWidget[accessibleName="CWidgetSizeTop"]
+{
+	border-top: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeBottom"]
+{
+	border-bottom: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeLeft"]
+{
+	border-left: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeRight"]
+{
+	border-right: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeTopLeft"]
+{
+	border-top: 1px solid #50a050;
+	border-left: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeTopRight"]
+{
+	border-top: 1px solid #50a050;
+	border-right: 1px solid #50a050;
+}
+
 QWidget[accessibleName="CWidgetSizeBottomLeft"]
 {
-	border-bottom: 1px solid #408040;
-	border-left: 1px solid #408040;
+	border-bottom: 1px solid #50a050;
+	border-left: 1px solid #50a050;
 }
 
 QWidget[accessibleName="CWidgetSizeBottomRight"]
 {
-	border-bottom: 1px solid #408040;
-	border-right: 1px solid #408040;
+	border-bottom: 1px solid #50a050;
+	border-right: 1px solid #50a050;
 }
 
 QMenu

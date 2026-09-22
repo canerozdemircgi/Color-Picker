@@ -12,7 +12,7 @@ public:
 	void setVisible(bool visible) override;
 
 private:
-	const std::array<CWidgetSize* const, 2u> instances;
+	const std::array<CWidgetSize* const, 8u> instances;
 
 	void showEvent(QShowEvent* const event) override;
 

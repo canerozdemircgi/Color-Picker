@@ -9,9 +9,7 @@ void CGui::makeFrameless(QWidget* const widget, Qt::WindowType windowType)
 {
 	widget->setWindowFlags(windowType | Qt::WindowType::FramelessWindowHint);
 
-	widget->setAttribute(Qt::WidgetAttribute::WA_OpaquePaintEvent);
-	// widget->setAttribute(Qt::WidgetAttribute::WA_TranslucentBackground);
-	// widget->setAttribute(Qt::WidgetAttribute::WA_StaticContents);
+	widget->setAttribute(Qt::WidgetAttribute::WA_TranslucentBackground);
 
 	#ifdef _WIN32
 	widget->setProperty("C", true);
