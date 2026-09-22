@@ -1,3 +1,4 @@
+help-about alt üst gapping problem
 double right click to enable|disable sizers
 
 qt string ile bytearray için xxxview
