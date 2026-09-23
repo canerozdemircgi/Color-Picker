@@ -9,7 +9,7 @@
 #include <QtCore/QFile>
 
 template <typename TString>
-TString CFile::readFile(const QString& path, const TString& fallback)
+TString CFile::readFile(const QString& path, const TString& fallback) noexcept
 {
 	if (QFile file(path); file.open(QIODevice::OpenModeFlag::ReadOnly | QIODevice::OpenModeFlag::Text))
 		return file.readAll();
@@ -17,13 +17,13 @@ TString CFile::readFile(const QString& path, const TString& fallback)
 }
 
 template <typename TString>
-TString CFile::readResource(const QString& folderResource, const QString& fileName, const TString& fallback)
+TString CFile::readResource(const QString& folderResource, const QString& fileName, const TString& fallback) noexcept
 {
 	for (uint8_t i = 0u; i < 2u; ++i)
 	{
 		if (i != 0u)
 		{
-			QMetaObject::invokeMethod(QCoreApplication::instance(), [](QStringView fileName)
+			QMetaObject::invokeMethod(QCoreApplication::instance(), [](QStringView fileName) noexcept
 			{
 				CDialogInfoWarningError* const warningDialog = new CDialogInfoWarningError(CGui::window(), CDialogInfoWarningError::Type::WARNING, u"Failed to load file: %1\nApplication has restored the default file."_s.arg(fileName));
 				warningDialog->show();
@@ -41,7 +41,7 @@ TString CFile::readResource(const QString& folderResource, const QString& fileNa
 }
 
 template <typename T>
-void CFile::writeFile(const QString& path, const T& content)
+void CFile::writeFile(const QString& path, const T& content) noexcept
 {
 	if (QFile file(path); file.open(QIODevice::OpenModeFlag::WriteOnly/* | QIODevice::OpenModeFlag::Text*/))
 		file.write(content);

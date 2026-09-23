@@ -14,7 +14,7 @@ public:
 		const QString name;
 		const QIcon icon;
 	};
-	explicit CDialogInfoWarningError(QWidget* const parent, const CDialogInfoWarningError::Type& type, const QString& content);
+	explicit CDialogInfoWarningError(QWidget* const parent, const CDialogInfoWarningError::Type& type, const QString& content) noexcept;
 
 	using CDialogOk::show;
 };

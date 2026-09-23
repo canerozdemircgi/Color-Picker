@@ -6,7 +6,7 @@
 
 #include <opencv2/core/version.hpp>
 
-CWindowAbout::CWindowAbout(QWidget* const parent) :
+CWindowAbout::CWindowAbout(QWidget* const parent) noexcept :
 	CDialogOk{parent, {.windowType = Qt::WindowType::SubWindow, .title = u"About"_s, .dispose = false}}
 {
 	const QString versionBlank{u"x.x.x"_s};
@@ -14,7 +14,7 @@ CWindowAbout::CWindowAbout(QWidget* const parent) :
 	const QString content = CFile::readFile<QString>(u":/Html/About.html"_s);
 	this->setContent(content.arg(versionBlank, versionBlank, versionBlank, versionBlank), true);
 
-	QMetaObject::invokeMethod(this, [this](const QString& content, const QString& versionBlank)
+	QMetaObject::invokeMethod(this, [this](const QString& content, const QString& versionBlank) noexcept
 	{
 		const QStringView versionQt{QStringLiteral(QT_VERSION_STR)};
 		const QStringView versionOpenCv{QStringLiteral(CV_VERSION)};
@@ -28,7 +28,7 @@ CWindowAbout::CWindowAbout(QWidget* const parent) :
 	}, Qt::ConnectionType::QueuedConnection, content, versionBlank);
 }
 
-QWidget& CWindowAbout::getInstance()
+QWidget& CWindowAbout::getInstance() noexcept
 {
 	static CWindowAbout* const INSTANCE = new CWindowAbout(CGui::window());
 	return *INSTANCE;

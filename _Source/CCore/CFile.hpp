@@ -9,11 +9,11 @@ class CFile final
 {
 public:
 	template <typename TString>
-	static TString readFile(const QString& path, const TString& fallback = nullptr);
+	static TString readFile(const QString& path, const TString& fallback = nullptr) noexcept;
 
 	template <typename TString>
-	static TString readResource(const QString& folderResource, const QString& fileName, const TString& fallback = nullptr);
+	static TString readResource(const QString& folderResource, const QString& fileName, const TString& fallback = nullptr) noexcept;
 
 	template <typename T>
-	static void writeFile(const QString& path, const T& content);
+	static void writeFile(const QString& path, const T& content) noexcept;
 };

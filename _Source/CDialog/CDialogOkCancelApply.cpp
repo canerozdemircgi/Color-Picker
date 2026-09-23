@@ -7,7 +7,7 @@
 
 #include <QtGui/QWindow>
 
-CDialogOkCancelApply::CDialogOkCancelApply(QWidget* const parent, const CDialogOkCancelApply::Parameters& parameters, QWidget* const content) :
+CDialogOkCancelApply::CDialogOkCancelApply(QWidget* const parent, const CDialogOkCancelApply::Parameters& parameters, QWidget* const content) noexcept :
 	QWidget(parent),
 
 	ui(CUi::newUi<Ui::CDialogOkCancelApply>(this, {.windowType = parameters.windowType, .icon = parameters.icon, .title = parameters.title, .minimize = false, .dispose = parameters.dispose}))
@@ -20,23 +20,23 @@ CDialogOkCancelApply::CDialogOkCancelApply(QWidget* const parent, const CDialogO
 	if (content)
 		this->setContent(content, true);
 
-	this->ui->Ok_PushButton->setMouseReleased([this]
+	this->ui->Ok_PushButton->setMouseReleased([this] noexcept
 	{
 		this->ui->Apply_PushButton->mousePressAndRelease();
 		this->ui->Cancel_PushButton->mousePressAndRelease();
 	});
-	this->ui->Cancel_PushButton->setMouseReleased([this]
+	this->ui->Cancel_PushButton->setMouseReleased([this] noexcept
 	{
 		this->window()->windowHandle()->close();
 	});
 }
 
-CDialogOkCancelApply::~CDialogOkCancelApply()
+CDialogOkCancelApply::~CDialogOkCancelApply() noexcept
 {
 	delete this->ui;
 }
 
-void CDialogOkCancelApply::setContent(QWidget* const content, bool setGeometryMinimumCenter)
+void CDialogOkCancelApply::setContent(QWidget* const content, bool setGeometryMinimumCenter) noexcept
 {
 	if (const QWidget* const child = this->ui->Body_Widget->findChild<const QWidget* const>(Qt::FindChildOption::FindDirectChildrenOnly))
 		delete child;

@@ -2,7 +2,7 @@
 
 #include <QtCore/QCoreApplication>
 
-void CApplication::processEvents()
+void CApplication::processEvents() noexcept
 {
 	QCoreApplication::processEvents(QEventLoop::ProcessEventsFlag::ExcludeUserInputEvents | QEventLoop::ProcessEventsFlag::ExcludeSocketNotifiers);
 }

@@ -21,23 +21,23 @@ public:
 		const Qt::Edges edges;
 		const Qt::CursorShape cursor;
 
-		void (* const move)(QWidget& widget);
+		void (* const move)(QWidget& widget) noexcept;
 
 	// friend class CWidgetSize;
 	// friend class CWidgetsSize;
 	};
-	explicit CWidgetSize(QWidget* const parent, const CWidgetSize::Direction& direction);
+	explicit CWidgetSize(QWidget* const parent, const CWidgetSize::Direction& direction) noexcept;
 
-	void move();
+	void move() noexcept;
 
 private:
 	const CWidgetSize::Direction& direction;
 
-	void showEvent(QShowEvent* const event) override;
+	void showEvent(QShowEvent* const event) noexcept override;
 
 	bool active;
-	void mouseMoveEvent(QMouseEvent* const event) override;
-	void mouseReleaseEvent(QMouseEvent* const event) override;
+	void mouseMoveEvent(QMouseEvent* const event) noexcept override;
+	void mouseReleaseEvent(QMouseEvent* const event) noexcept override;
 
 // friend class CWidgetsSize;
 };

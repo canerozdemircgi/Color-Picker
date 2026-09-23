@@ -4,7 +4,7 @@
 
 using namespace Qt::Literals::StringLiterals;
 
-CWidgetMove::CWidgetMove(QWidget* const parent) :
+CWidgetMove::CWidgetMove(QWidget* const parent) noexcept :
 	QWidget{parent},
 
 	active{false}
@@ -12,7 +12,7 @@ CWidgetMove::CWidgetMove(QWidget* const parent) :
 	this->setAccessibleName(u"CWidgetMove"_s);
 }
 
-void CWidgetMove::mouseMoveEvent(QMouseEvent* const event)
+void CWidgetMove::mouseMoveEvent(QMouseEvent* const event) noexcept
 {
 	QWidget::mouseMoveEvent(event);
 
@@ -23,7 +23,7 @@ void CWidgetMove::mouseMoveEvent(QMouseEvent* const event)
 	}
 }
 
-void CWidgetMove::mouseReleaseEvent(QMouseEvent* const event)
+void CWidgetMove::mouseReleaseEvent(QMouseEvent* const event) noexcept
 {
 	if (this->active)
 		this->active = false;
@@ -31,7 +31,7 @@ void CWidgetMove::mouseReleaseEvent(QMouseEvent* const event)
 	QWidget::mouseReleaseEvent(event);
 }
 
-void CWidgetMove::mouseDoubleClickEvent(QMouseEvent* const event)
+void CWidgetMove::mouseDoubleClickEvent(QMouseEvent* const event) noexcept
 {
 	QWidget::mouseDoubleClickEvent(event);
 

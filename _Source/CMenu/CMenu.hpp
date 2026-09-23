@@ -10,15 +10,15 @@ public:
 		const int8_t offsetX = 0;
 		const int8_t offsetY = 0;
 	};
-	explicit CMenu(QWidget* const parent, const CMenu::Parameters& parameters);
+	explicit CMenu(QWidget* const parent, const CMenu::Parameters& parameters) noexcept;
 
-	void toggle();
+	void toggle() noexcept;
 
 private:
 	const QPoint offset;
-	void move();
+	void move() noexcept;
 
-	void mouseReleaseEvent(QMouseEvent* const event) override;
+	void mouseReleaseEvent(QMouseEvent* const event) noexcept override;
 
-	bool eventFilter(QObject* const object, QEvent* const event) override;
+	bool eventFilter(QObject* const object, QEvent* const event) noexcept override;
 };

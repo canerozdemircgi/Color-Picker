@@ -6,7 +6,7 @@
 #include <QtGui/QWheelEvent>
 #include <QtWidgets/QHBoxLayout>
 
-CColorSlots::CColorSlots(QWidget* const parent) :
+CColorSlots::CColorSlots(QWidget* const parent) noexcept :
 	QWidget{parent},
 
 	columns{0u},
@@ -14,7 +14,7 @@ CColorSlots::CColorSlots(QWidget* const parent) :
 {
 }
 
-void CColorSlots::initialize(uint8_t columns, uint8_t rows, uint8_t x, uint8_t y)
+void CColorSlots::initialize(uint8_t columns, uint8_t rows, uint8_t x, uint8_t y) noexcept
 {
 	this->setUpdatesEnabled(false);
 
@@ -45,7 +45,7 @@ void CColorSlots::initialize(uint8_t columns, uint8_t rows, uint8_t x, uint8_t y
 	this->setUpdatesEnabled(true);
 }
 
-void CColorSlots::removeColumns(uint8_t columns)
+void CColorSlots::removeColumns(uint8_t columns) noexcept
 {
 	for (uint8_t y = 0u; y < this->rows; ++y)
 	{
@@ -55,14 +55,14 @@ void CColorSlots::removeColumns(uint8_t columns)
 	}
 }
 
-void CColorSlots::removeRows(uint8_t rows)
+void CColorSlots::removeRows(uint8_t rows) noexcept
 {
 	for (uint8_t y = rows; y < this->rows; ++y)
 		delete this->layout()->itemAt(rows)->widget();
 	this->instances.resize(rows);
 }
 
-void CColorSlots::addColumns(uint8_t columns)
+void CColorSlots::addColumns(uint8_t columns) noexcept
 {
 	for (uint8_t y = 0u; y < this->rows; ++y)
 	{
@@ -74,7 +74,7 @@ void CColorSlots::addColumns(uint8_t columns)
 	}
 }
 
-void CColorSlots::addRows(uint8_t rows)
+void CColorSlots::addRows(uint8_t rows) noexcept
 {
 	this->instances.resize(rows);
 
@@ -92,7 +92,7 @@ void CColorSlots::addRows(uint8_t rows)
 	}
 }
 
-const CColorSlot* CColorSlots::createColorSlot(QWidget* const parent, std::pair<const uint8_t, const uint8_t> xy)
+const CColorSlot* CColorSlots::createColorSlot(QWidget* const parent, std::pair<const uint8_t, const uint8_t> xy) noexcept
 {
 	CColorSlot* const colorSlot = new CColorSlot(parent, xy);
 	colorSlot->setBackgroundColor(CColor::randomColor(CColor::Spec::RGB, {0u, 255u}, {0u, 255u}, {0u, 255u}, {128u, 255u}));
@@ -100,7 +100,7 @@ const CColorSlot* CColorSlots::createColorSlot(QWidget* const parent, std::pair<
 	return colorSlot;
 }
 
-void CColorSlots::wheelEvent(QWheelEvent* const event)
+void CColorSlots::wheelEvent(QWheelEvent* const event) noexcept
 {
 	int16_t x = static_cast<int16_t>(CColorSlot::getSelection()->xy.first);
 	int16_t y = static_cast<int16_t>(CColorSlot::getSelection()->xy.second);

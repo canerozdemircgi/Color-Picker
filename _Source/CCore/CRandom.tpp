@@ -5,7 +5,7 @@
 #include <random>
 
 template <std::integral T>
-T CRandom::generateRandomInt(T min, T max)
+T CRandom::generateRandomInt(T min, T max) noexcept
 {
 	if (min == max)
 		return min;

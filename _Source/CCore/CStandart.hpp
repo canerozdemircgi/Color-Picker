@@ -9,13 +9,13 @@ template<typename T>
 class required final
 {
 public:
-	constexpr explicit required(T&& value) : value(std::forward<T>(value)) {}
+	constexpr explicit required(T&& value) noexcept : value(std::forward<T>(value)) {}
 
 	template <typename U> requires std::constructible_from<T, U>
-	constexpr /*explicit*/ required(U&& value) : value(std::forward<U>(value)) {}
+	constexpr /*explicit*/ required(U&& value) noexcept : value(std::forward<U>(value)) {}
 
-	constexpr /*explicit*/ operator const T&() const { return this->value; }
-	constexpr const T& operator *() const { return this->value; }
+	constexpr /*explicit*/ operator const T&() const noexcept { return this->value; }
+	constexpr const T& operator *() const noexcept { return this->value; }
 
 private:
 	const T value;

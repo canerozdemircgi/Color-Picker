@@ -9,7 +9,7 @@ using namespace Qt::Literals::StringLiterals;
 
 const CColorSlot* CColorSlot::SELECTION;
 
-const CColorSlot* CColorSlot::getSelection()
+const CColorSlot* CColorSlot::getSelection() noexcept
 {
 	return CColorSlot::SELECTION;
 }
@@ -25,7 +25,7 @@ QCache<const QString, const QPixmap> CACHE_PIXMAP_MASK(4);
 
 }
 
-CColorSlot::CColorSlot(QWidget* const parent, std::pair<const uint8_t, const uint8_t> xy) :
+CColorSlot::CColorSlot(QWidget* const parent, std::pair<const uint8_t, const uint8_t> xy) noexcept :
 	CLabelSvg(parent, {{.path = path, .keepAspectRatio = false}, {.cachePixmap = &CACHE_PIXMAP_CHECKER}}),
 
 	xy(xy),
@@ -42,12 +42,12 @@ CColorSlot::CColorSlot(QWidget* const parent, std::pair<const uint8_t, const uin
 	this->Target_Label->setVisible(false);
 }
 
-void CColorSlot::setBackgroundColor(const QColor& color) const
+void CColorSlot::setBackgroundColor(const QColor& color) const noexcept
 {
 	this->Color_Widget->setPalette(color);
 }
 
-void CColorSlot::select() const
+void CColorSlot::select() const noexcept
 {
 	if (CColorSlot::SELECTION == this)
 		return;
@@ -58,20 +58,20 @@ void CColorSlot::select() const
 	this->setSelected(true);
 }
 
-void CColorSlot::setSelected(bool selected) const
+void CColorSlot::setSelected(bool selected) const noexcept
 {
 	this->Target_Label->setVisible(selected);
 	this->Mask_Label->setVisible(!selected);
 }
 
-void CColorSlot::mouseReleaseEvent(QMouseEvent* const event)
+void CColorSlot::mouseReleaseEvent(QMouseEvent* const event) noexcept
 {
 	this->select();
 
 	CLabelSvg::mouseReleaseEvent(event);
 }
 
-void CColorSlot::resizeEvent(QResizeEvent* const event)
+void CColorSlot::resizeEvent(QResizeEvent* const event) noexcept
 {
 	this->Color_Widget->setFixedSize(this->size());
 	this->Target_Label->setFixedSize(this->size());

@@ -12,7 +12,7 @@
 #include <QtGui/QWindow>
 #include <QtGui/QWindowStateChangeEvent>
 
-CWindowMain::CWindowMain(QWidget* const parent) :
+CWindowMain::CWindowMain(QWidget* const parent) noexcept :
 	QWidget{parent},
 
 	ui{CUi::newUi<Ui::CWindowMain>(this, {.windowType = Qt::WindowType::Window, .menu = CMenu::Parameters{}, .title = u"Color-Picker by canerozdemircgi"_s, .atop = true, .dispose = false})},
@@ -20,37 +20,37 @@ CWindowMain::CWindowMain(QWidget* const parent) :
 {
 	this->ui->Main_Widget->setProperty("hasNoBackground", true);
 
-	this->ui->TitleBar->addMenuAction(u":/Window/Settings.svg"_s, u"Settings"_s, []{});
-	this->ui->TitleBar->addMenuAction(u":/Window/Help.svg"_s, u"Help"_s, []
+	this->ui->TitleBar->addMenuAction(u":/Window/Settings.svg"_s, u"Settings"_s, [] noexcept{});
+	this->ui->TitleBar->addMenuAction(u":/Window/Help.svg"_s, u"Help"_s, [] noexcept
 	{
 		QWidget& helpWindow = CWindowHelp::getInstance();
 		helpWindow.show();
 	});
-	this->ui->TitleBar->addMenuAction(u":/Window/About.svg"_s, u"About"_s, []
+	this->ui->TitleBar->addMenuAction(u":/Window/About.svg"_s, u"About"_s, [] noexcept
 	{
 		QWidget& aboutWindow = CWindowAbout::getInstance();
 		aboutWindow.show();
 	});
 
-	this->ui->Reset_PushButton->setMouseReleased([this]
+	this->ui->Reset_PushButton->setMouseReleased([this] noexcept
 	{
 		CConfiguration::refresh(this, true);
 	});
 }
 
-CWindowMain::~CWindowMain()
+CWindowMain::~CWindowMain() noexcept
 {
 	delete this->ui;
 }
 
-void CWindowMain::showEvent(QShowEvent* const event)
+void CWindowMain::showEvent(QShowEvent* const event) noexcept
 {
 	QWidget::showEvent(event);
 
 	this->window()->windowHandle()->installEventFilter(this);
 }
 
-bool CWindowMain::eventFilter(QObject* const object, QEvent* const event)
+bool CWindowMain::eventFilter(QObject* const object, QEvent* const event) noexcept
 {
 	if (event->type() == QEvent::Type::WindowStateChange)
 	{

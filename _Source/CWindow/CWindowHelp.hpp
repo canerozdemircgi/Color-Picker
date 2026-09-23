@@ -5,8 +5,8 @@
 class CWindowHelp final : private CDialogOk
 {
 public:
-	static QWidget& getInstance();
+	static QWidget& getInstance() noexcept;
 
 private:
-	explicit CWindowHelp(QWidget* const parent);
+	explicit CWindowHelp(QWidget* const parent) noexcept;
 };

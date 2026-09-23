@@ -4,7 +4,7 @@
 
 #include <QtGui/QWindow>
 
-CWidgetsSize::CWidgetsSize(QWidget* const parent) :
+CWidgetsSize::CWidgetsSize(QWidget* const parent) noexcept :
 	QWidget{parent},
 
 	instances
@@ -25,20 +25,20 @@ CWidgetsSize::CWidgetsSize(QWidget* const parent) :
 	QWidget::setVisible(true);
 }
 
-void CWidgetsSize::setVisible(bool visible)
+void CWidgetsSize::setVisible(bool visible) noexcept
 {
 	for (CWidgetSize* const instance : this->instances)
 		instance->setVisible(visible);
 }
 
-void CWidgetsSize::showEvent(QShowEvent* const event)
+void CWidgetsSize::showEvent(QShowEvent* const event) noexcept
 {
 	QWidget::showEvent(event);
 
 	this->window()->windowHandle()->installEventFilter(this);
 }
 
-bool CWidgetsSize::eventFilter(QObject* const object, QEvent* const event)
+bool CWidgetsSize::eventFilter(QObject* const object, QEvent* const event) noexcept
 {
 	const bool eventFilter = QWidget::eventFilter(object, event);
 

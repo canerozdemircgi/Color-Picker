@@ -7,7 +7,7 @@
 
 using namespace Qt::Literals::StringLiterals;
 
-CMenu::CMenu(QWidget* const parent, const CMenu::Parameters& parameters) :
+CMenu::CMenu(QWidget* const parent, const CMenu::Parameters& parameters) noexcept :
 	QMenu(parent),
 
 	offset(parameters.offsetX, parameters.offsetY)
@@ -16,7 +16,7 @@ CMenu::CMenu(QWidget* const parent, const CMenu::Parameters& parameters) :
 	this->setAccessibleName(u"CMenu"_s);
 }
 
-void CMenu::toggle()
+void CMenu::toggle() noexcept
 {
 	if (this->isVisible())
 	{
@@ -31,12 +31,12 @@ void CMenu::toggle()
 	}
 }
 
-void CMenu::move()
+void CMenu::move() noexcept
 {
 	QMenu::move(this->parentWidget()->mapToGlobal(this->parentWidget()->rect().bottomLeft() + offset));
 }
 
-void CMenu::mouseReleaseEvent(QMouseEvent* const event)
+void CMenu::mouseReleaseEvent(QMouseEvent* const event) noexcept
 {
 	QMenu::mouseReleaseEvent(event);
 
@@ -47,7 +47,7 @@ void CMenu::mouseReleaseEvent(QMouseEvent* const event)
 	}
 }
 
-bool CMenu::eventFilter(QObject* const object, QEvent* const event)
+bool CMenu::eventFilter(QObject* const object, QEvent* const event) noexcept
 {
 	const bool eventFilter = QMenu::eventFilter(object, event);
 

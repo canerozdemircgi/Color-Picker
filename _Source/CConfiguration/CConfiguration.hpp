@@ -40,11 +40,11 @@ public:
 		MainWindow mainWindow;
 	};
 
-	static void initialize(CWindowMain* const mainWindow);
-	static void refresh(CWindowMain* const mainWindow, bool reset = false);
+	static void initialize(CWindowMain* const mainWindow) noexcept;
+	static void refresh(CWindowMain* const mainWindow, bool reset = false) noexcept;
 
 private:
-	static void prettyPrint(std::ostream& ostream, const boost::json::value& json_value, uint8_t level = 0);
+	static void prettyPrint(std::ostream& ostream, const boost::json::value& json_value, uint8_t level = 0) noexcept;
 };
 
 BOOST_DESCRIBE_STRUCT(CConfiguration::Data::MainWindow::TitleBar, (), (atop, simple, maximize));

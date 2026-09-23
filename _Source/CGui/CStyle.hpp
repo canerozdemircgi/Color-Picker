@@ -5,5 +5,5 @@ class QApplication;
 class CStyle final
 {
 public:
-	static void initialize(QApplication* const application);
+	static void initialize(QApplication* const application) noexcept;
 };

@@ -2,17 +2,17 @@
 
 #include <QtGui/QMouseEvent>
 
-CPushButtonSta::CPushButtonSta(QWidget* const parent) :
+CPushButtonSta::CPushButtonSta(QWidget* const parent) noexcept :
 	QPushButton(parent)
 {
 }
 
-QMouseEvent CPushButtonSta::redirectMouseEvent(const QMouseEvent& event)
+QMouseEvent CPushButtonSta::redirectMouseEvent(const QMouseEvent& event) noexcept
 {
 	return CPushButtonSta::redirectMouseEvent(event, event.type());
 }
 
-QMouseEvent CPushButtonSta::redirectMouseEvent(const QMouseEvent& event, QEvent::Type type)
+QMouseEvent CPushButtonSta::redirectMouseEvent(const QMouseEvent& event, QEvent::Type type) noexcept
 {
 	return
 	{
@@ -28,7 +28,7 @@ QMouseEvent CPushButtonSta::redirectMouseEvent(const QMouseEvent& event, QEvent:
 	};
 }
 
-void CPushButtonSta::mousePressAndRelease()
+void CPushButtonSta::mousePressAndRelease() noexcept
 {
 	const QMouseEvent event
 	{
@@ -47,13 +47,13 @@ void CPushButtonSta::mousePressAndRelease()
 	QCoreApplication::sendEvent(this, &eventR2);
 }
 
-void CPushButtonSta::setChecked(bool checked)
+void CPushButtonSta::setChecked(bool checked) noexcept
 {
 	if (this->isChecked() != checked)
 		this->mousePressAndRelease();
 }
 
-void CPushButtonSta::mousePressEvent(QMouseEvent* const event)
+void CPushButtonSta::mousePressEvent(QMouseEvent* const event) noexcept
 {
 	if (event->button() == Qt::MouseButton::LeftButton)
 		QPushButton::mousePressEvent(event);
@@ -64,7 +64,7 @@ void CPushButtonSta::mousePressEvent(QMouseEvent* const event)
 	}
 }
 
-void CPushButtonSta::mouseReleaseEvent(QMouseEvent* const event)
+void CPushButtonSta::mouseReleaseEvent(QMouseEvent* const event) noexcept
 {
 	if (event->button() == Qt::MouseButton::LeftButton)
 		QPushButton::mouseReleaseEvent(event);
@@ -90,7 +90,7 @@ void CPushButtonSta::mouseReleaseEvent(QMouseEvent* const event)
 	}
 }
 
-void CPushButtonSta::keyPressEvent(QKeyEvent* const event)
+void CPushButtonSta::keyPressEvent(QKeyEvent* const event) noexcept
 {
 	QPushButton::keyPressEvent(event);
 

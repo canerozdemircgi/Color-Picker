@@ -4,12 +4,12 @@
 
 #include <QtGui/QColor>
 
-float CColor::luminance(const QColor& color)
+float CColor::luminance(const QColor& color) noexcept
 {
 	return color.redF() * 0.2126f + color.greenF() * 0.7152f + color.blueF() * 0.0722f;
 }
 
-QColor CColor::randomColor(CColor::Spec spec, std::pair<const uint8_t, const uint8_t> xRange, std::pair<const uint8_t, const uint8_t> yRange, std::pair<const uint8_t, const uint8_t> zRange, std::pair<const uint8_t, const uint8_t> wRange)
+QColor CColor::randomColor(CColor::Spec spec, std::pair<const uint8_t, const uint8_t> xRange, std::pair<const uint8_t, const uint8_t> yRange, std::pair<const uint8_t, const uint8_t> zRange, std::pair<const uint8_t, const uint8_t> wRange) noexcept
 {
 	const uint8_t x = CRandom::generateRandomInt(xRange.first, xRange.second);
 	const uint8_t w = CRandom::generateRandomInt(wRange.first, wRange.second);

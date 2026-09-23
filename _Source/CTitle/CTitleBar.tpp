@@ -6,9 +6,9 @@
 #include "CGui/CSvg.hpp"
 
 template <CLambda::CCallable<void> Function>
-void CTitleBar::addMenuAction(const QString& icon, const QString& text, Function&& function) const
+void CTitleBar::addMenuAction(const QString& icon, const QString& text, Function&& function) const noexcept
 {
-	QObject::connect(this->menu->addAction(CSvg::createPixmap({{{.path = icon}}, {.width = 12, .height = 12}}), text), &QAction::triggered, [this, function = std::move(function)]
+	QObject::connect(this->menu->addAction(CSvg::createPixmap({{{.path = icon}}, {.width = 12, .height = 12}}), text), &QAction::triggered, [this, function = std::move(function)] noexcept
 	{
 		this->ui->Icon_PushButton->mousePressAndRelease();
 		function();

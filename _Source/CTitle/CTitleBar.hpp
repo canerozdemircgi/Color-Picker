@@ -18,8 +18,8 @@ class CWidgetsSize;
 class CTitleBar final : public QWidget
 {
 public:
-	explicit CTitleBar(QWidget* const parent);
-	~CTitleBar() override;
+	explicit CTitleBar(QWidget* const parent) noexcept;
+	~CTitleBar() noexcept override;
 
 	struct Parameters final
 	{
@@ -36,11 +36,11 @@ public:
 
 		const bool dispose = true;
 	};
-	void initialize(const CTitleBar::Parameters& parameters);
+	void initialize(const CTitleBar::Parameters& parameters) noexcept;
 
 	template <CLambda::CCallable<void> Function>
-	void addMenuAction(const QString& icon, const QString& text, Function&& function) const;
-	CPushButtonSta& addControlButton(const QString& icon, const QString& tooltip, uint8_t index, bool checkable = false, const QString& tooltipChecked = u""_s) const;
+	void addMenuAction(const QString& icon, const QString& text, Function&& function) const noexcept;
+	CPushButtonSta& addControlButton(const QString& icon, const QString& tooltip, uint8_t index, bool checkable = false, const QString& tooltipChecked = u""_s) const noexcept;
 
 private:
 	const Ui::CTitleBar* const ui;
@@ -48,7 +48,7 @@ private:
 	CWidgetsSize& sizeWidgets;
 
 	QRect geometryOriginal;
-	QRect getGeometry() const;
+	QRect getGeometry() const noexcept;
 
 friend class CConfiguration;
 };

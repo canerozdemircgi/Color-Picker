@@ -7,7 +7,7 @@
 #include <QtGui/QPainter>
 #include <QtSvg/QSvgRenderer>
 
-QPixmap CSvg::createPixmap(const CSvg::Parameters& parameters)
+QPixmap CSvg::createPixmap(const CSvg::Parameters& parameters) noexcept
 {
 	static QHash<const QString, QByteArray> CACHE_FILE;
 	static QCache<const QString, const QPixmap> CACHE_PIXMAP(64);
@@ -18,7 +18,7 @@ QPixmap CSvg::createPixmap(const CSvg::Parameters& parameters)
 	if (cachePixmap.contains(key))
 		return *cachePixmap.object(key);
 
-	const QByteArray content = [](const CSvg::Parameters& parameters)
+	const QByteArray content = [](const CSvg::Parameters& parameters) noexcept
 	{
 		if (!CACHE_FILE.contains(parameters.path))
 			CACHE_FILE.insert(parameters.path, CFile::readFile<QByteArray>(parameters.path));
@@ -42,7 +42,7 @@ QPixmap CSvg::createPixmap(const CSvg::Parameters& parameters)
 		const double svgRatio = static_cast<double>(svgSize.width()) / static_cast<double>(svgSize.height());
 		const double targetRatio = static_cast<double>(parameters.width) / static_cast<double>(parameters.height);
 
-		const auto [width, height] = [](const uint16_t width, const uint16_t height, const double svgRatio, const double targetRatio) -> std::pair<const double, const double>
+		const auto [width, height] = [](const uint16_t width, const uint16_t height, const double svgRatio, const double targetRatio) noexcept -> std::pair<const double, const double>
 		{
 			if (qAbs(svgRatio - targetRatio) < 1e-8)
 				return {width, height};
@@ -62,7 +62,7 @@ QPixmap CSvg::createPixmap(const CSvg::Parameters& parameters)
 
 	if (!parameters.cacheColors.empty())
 	{
-		QMetaObject::invokeMethod(QCoreApplication::instance(), [](const CSvg::Parameters& parameters)
+		QMetaObject::invokeMethod(QCoreApplication::instance(), [](const CSvg::Parameters& parameters) noexcept
 		{
 			const std::span<const QByteArray> cacheColors = parameters.cacheColors;
 			const QByteArray color = parameters.color;

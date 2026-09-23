@@ -4,12 +4,12 @@
 
 using namespace Qt::Literals::StringLiterals;
 
-CProxyStyle::CProxyStyle() :
+CProxyStyle::CProxyStyle() noexcept :
 	QProxyStyle(u"Fusion"_s)
 {
 }
 
-int CProxyStyle::pixelMetric(QStyle::PixelMetric pixelMetric, const QStyleOption* const styleOption, const QWidget* const widget) const
+int CProxyStyle::pixelMetric(QStyle::PixelMetric pixelMetric, const QStyleOption* const styleOption, const QWidget* const widget) const noexcept
 {
 	if (pixelMetric == QStyle::PixelMetric::PM_SmallIconSize)
 		return 12;
@@ -17,7 +17,7 @@ int CProxyStyle::pixelMetric(QStyle::PixelMetric pixelMetric, const QStyleOption
 	return QProxyStyle::pixelMetric(pixelMetric, styleOption, widget);
 }
 
-QPixmap CProxyStyle::generatedIconPixmap(QIcon::Mode mode, const QPixmap& pixmap, const QStyleOption* const styleOption) const
+QPixmap CProxyStyle::generatedIconPixmap(QIcon::Mode mode, const QPixmap& pixmap, const QStyleOption* const styleOption) const noexcept
 {
 	static constexpr QColor DISABLED_COLOR(0, 0, 0, 128);
 

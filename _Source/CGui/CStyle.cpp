@@ -6,7 +6,7 @@
 #include <QtGui/QFontDatabase>
 #include <QtWidgets/QApplication>
 
-void CStyle::initialize(QApplication* const application)
+void CStyle::initialize(QApplication* const application) noexcept
 {
 	Q_ASSERT(QFontDatabase::addApplicationFont(u":/Font/Roboto-VariableFont_wdth,wght.ttf"_s) != -1);
 	QFont font(u"Roboto"_s);

@@ -5,7 +5,7 @@
 
 #include <QtWidgets/QApplication>
 
-int main(int argc, char** const argv)
+int main(int argc, char** const argv) noexcept
 {
 	CPlatform::setProcessPriority(CPlatform::Priority::HIGH);
 

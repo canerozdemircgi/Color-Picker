@@ -9,15 +9,15 @@ class CPushButtonSta;
 class CWindowMain final : public QWidget
 {
 public:
-	explicit CWindowMain(QWidget* const parent);
-	~CWindowMain() override;
+	explicit CWindowMain(QWidget* const parent) noexcept;
+	~CWindowMain() noexcept override;
 
 private:
 	const Ui::CWindowMain* const ui;
 	CPushButtonSta& SimpleMode_PushButton;
 
-	void showEvent(QShowEvent* const event) override;
-	bool eventFilter(QObject* const object, QEvent* const event) override;
+	void showEvent(QShowEvent* const event) noexcept override;
+	bool eventFilter(QObject* const object, QEvent* const event) noexcept override;
 
 friend class CConfiguration;
 };

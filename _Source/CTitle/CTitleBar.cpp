@@ -9,7 +9,7 @@
 
 #include <QtGui/QWindow>
 
-CTitleBar::CTitleBar(QWidget* const parent) :
+CTitleBar::CTitleBar(QWidget* const parent) noexcept :
 	QWidget{parent},
 
 	ui{CUi::newUi<Ui::CTitleBar>(this)},
@@ -24,7 +24,7 @@ CTitleBar::~CTitleBar()
 	delete this->ui;
 }
 
-void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
+void CTitleBar::initialize(const CTitleBar::Parameters& parameters) noexcept
 {
 	static const QIcon MENU_ICON(u":/Logo/Color-Picker.svg"_s);
 	static const QIcon MAXIMIZE_ICON(u":/Direction/Up.svg"_s);
@@ -41,7 +41,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 		this->ui->Icon_PushButton->setAccessibleName(u"CTitleBarButtonMenu"_s);
 		this->ui->Icon_PushButton->setText(u"\u2009Menu"_s);
 
-		this->ui->Icon_PushButton->setMouseReleased([this]
+		this->ui->Icon_PushButton->setMouseReleased([this] noexcept
 		{
 			this->menu->toggle();
 		});
@@ -57,7 +57,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 
 	if (parameters.atop)
 	{
-		this->ui->ATop_PushButton->setMouseReleased([this]
+		this->ui->ATop_PushButton->setMouseReleased([this] noexcept
 		{
 			if (this->window()->windowHandle())
 			{
@@ -80,7 +80,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 	{
 		this->window()->setWindowFlag(Qt::WindowType::WindowMinimizeButtonHint);
 
-		this->ui->Minimize_PushButton->setMouseReleased([this]
+		this->ui->Minimize_PushButton->setMouseReleased([this] noexcept
 		{
 			this->window()->windowHandle()->showMinimized();
 		});
@@ -92,7 +92,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 	{
 		this->window()->setWindowFlag(Qt::WindowType::WindowMaximizeButtonHint);
 
-		this->ui->Maximize_PushButton->setMouseReleased([this]
+		this->ui->Maximize_PushButton->setMouseReleased([this] noexcept
 		{
 			if (this->ui->Maximize_PushButton->isChecked())
 			{
@@ -127,7 +127,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 				this->sizeWidgets.setVisible(true);
 			}
 		});
-		this->ui->Title_Widget->setMouseDoubleClicked([this]
+		this->ui->Title_Widget->setMouseDoubleClicked([this] noexcept
 		{
 			this->ui->Maximize_PushButton->mousePressAndRelease();
 		});
@@ -137,7 +137,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 
 	if (parameters.close)
 	{
-		this->ui->Close_PushButton->setMouseReleased([this]
+		this->ui->Close_PushButton->setMouseReleased([this] noexcept
 		{
 			this->window()->windowHandle()->close();
 		});
@@ -149,7 +149,7 @@ void CTitleBar::initialize(const CTitleBar::Parameters& parameters)
 		this->window()->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose);
 }
 
-CPushButtonSta& CTitleBar::addControlButton(const QString& icon, const QString& tooltip, uint8_t index, bool checkable, const QString& tooltipChecked) const
+CPushButtonSta& CTitleBar::addControlButton(const QString& icon, const QString& tooltip, uint8_t index, bool checkable, const QString& tooltipChecked) const noexcept
 {
 	CPushButtonSta* const button = new CPushButtonSta(this->ui->Control_Widget);
 	button->setSizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
@@ -162,7 +162,7 @@ CPushButtonSta& CTitleBar::addControlButton(const QString& icon, const QString& 
 
 	if (checkable && !tooltipChecked.isEmpty())
 	{
-		QObject::connect(button, &QAbstractButton::toggled, [button, tooltip, tooltipChecked]
+		QObject::connect(button, &QAbstractButton::toggled, [button, tooltip, tooltipChecked] noexcept
 		{
 			button->setToolTip(button->isChecked() ? tooltipChecked : tooltip);
 		});
@@ -171,7 +171,7 @@ CPushButtonSta& CTitleBar::addControlButton(const QString& icon, const QString& 
 	return *button;
 }
 
-QRect CTitleBar::getGeometry() const
+QRect CTitleBar::getGeometry() const noexcept
 {
 	if (!this->geometryOriginal.isEmpty())
 		return this->geometryOriginal;

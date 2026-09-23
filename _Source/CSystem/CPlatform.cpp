@@ -11,10 +11,10 @@
 #endif
 
 // TODO: implement linux counterpart
-void CPlatform::setProcessPriority(CPlatform::Priority priority)
+void CPlatform::setProcessPriority(CPlatform::Priority priority) noexcept
 {
 	#ifdef _WIN32
-	const DWORD dword = [](CPlatform::Priority priority)
+	const DWORD dword = [](CPlatform::Priority priority) noexcept
 	{
 		switch (priority)
 		{
@@ -31,7 +31,7 @@ void CPlatform::setProcessPriority(CPlatform::Priority priority)
 }
 
 #ifdef _WIN32
-void CPlatform::fixResize()
+void CPlatform::fixResize() noexcept
 {
 	static class CNativeEventFilter final : public QAbstractNativeEventFilter
 	{

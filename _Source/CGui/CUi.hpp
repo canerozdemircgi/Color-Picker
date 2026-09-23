@@ -4,7 +4,7 @@ namespace CUi
 {
 
 template<typename T>
-constexpr const T* newUi(QWidget* const widget)
+constexpr const T* newUi(QWidget* const widget) noexcept
 {
 	T* const ui = new T;
 	ui->setupUi(widget);
@@ -12,7 +12,7 @@ constexpr const T* newUi(QWidget* const widget)
 }
 
 template<typename T>
-constexpr const T* newUi(QWidget* const widget, const CTitleBar::Parameters& parameters)
+constexpr const T* newUi(QWidget* const widget, const CTitleBar::Parameters& parameters) noexcept
 {
 	const T* const ui = newUi<T>(widget);
 	ui->TitleBar->initialize(parameters);

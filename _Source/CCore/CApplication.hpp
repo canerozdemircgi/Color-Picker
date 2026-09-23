@@ -3,5 +3,5 @@
 class CApplication final
 {
 public:
-	static void processEvents();
+	static void processEvents() noexcept;
 };

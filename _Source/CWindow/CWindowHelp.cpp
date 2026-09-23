@@ -2,12 +2,12 @@
 
 #include "CCore/CFile.tpp"
 
-CWindowHelp::CWindowHelp(QWidget* const parent) :
+CWindowHelp::CWindowHelp(QWidget* const parent) noexcept :
 	CDialogOk{parent, {.windowType = Qt::WindowType::SubWindow, .title = u"Help"_s, .dispose = false}, CFile::readFile<QString>(u":/Html/Help.html"_s)}
 {
 }
 
-QWidget& CWindowHelp::getInstance()
+QWidget& CWindowHelp::getInstance() noexcept
 {
 	static CWindowHelp* const INSTANCE = new CWindowHelp(CGui::window());
 	return *INSTANCE;

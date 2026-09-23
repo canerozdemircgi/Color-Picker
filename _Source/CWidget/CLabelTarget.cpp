@@ -16,12 +16,12 @@ const std::array<const QByteArray, 2> COLORS{COLOR_DARK, COLOR_LIGHT};
 
 }
 
-CLabelTarget::CLabelTarget(QWidget* const parent, QCache<const QString, const QPixmap>* const cachePixmap) :
+CLabelTarget::CLabelTarget(QWidget* const parent, QCache<const QString, const QPixmap>* const cachePixmap) noexcept :
 	CLabelSvg{parent, {{.path = path}, {.cachePixmap = cachePixmap, .cacheColors = COLORS}}}
 {
 }
 
-void CLabelTarget::setVisible(bool visible)
+void CLabelTarget::setVisible(bool visible) noexcept
 {
 	if (visible)
 		this->setColor(CColor::luminance(this->parentWidget()->palette().color(QPalette::ColorRole::Button)) > 0.5f ? COLOR_DARK : COLOR_LIGHT);

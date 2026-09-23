@@ -11,7 +11,7 @@ const CDialogInfoWarningError::Type CDialogInfoWarningError::Type::WARNING =
 	QIcon(u":/Window/Warning.svg"_s)
 };
 
-CDialogInfoWarningError::CDialogInfoWarningError(QWidget* const parent, const CDialogInfoWarningError::Type& type, const QString& content) :
+CDialogInfoWarningError::CDialogInfoWarningError(QWidget* const parent, const CDialogInfoWarningError::Type& type, const QString& content) noexcept :
 	CDialogOk(parent, {.windowType = Qt::WindowType::ToolTip, .icon = type.icon, .title = type.name}, content)
 {
 }

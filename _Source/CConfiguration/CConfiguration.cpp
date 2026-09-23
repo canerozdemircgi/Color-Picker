@@ -13,9 +13,9 @@
 
 #include <boost/json.hpp>
 
-void CConfiguration::initialize(CWindowMain* const mainWindow)
+void CConfiguration::initialize(CWindowMain* const mainWindow) noexcept
 {
-	QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [&mainWindow]
+	QObject::connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, [&mainWindow] noexcept
 	{
 		const QRect mainWindowGeometry = mainWindow->ui->TitleBar->getGeometry();
 		const CConfiguration::Data data =
@@ -52,13 +52,13 @@ void CConfiguration::initialize(CWindowMain* const mainWindow)
 	CConfiguration::refresh(mainWindow);
 }
 
-void CConfiguration::refresh(CWindowMain* const mainWindow, bool reset)
+void CConfiguration::refresh(CWindowMain* const mainWindow, bool reset) noexcept
 {
-	const QByteArray byteArray = [](CWindowMain* const mainWindow, bool reset)
+	const QByteArray byteArray = [](CWindowMain* const mainWindow, bool reset) noexcept
 	{
 		if (reset)
 		{
-			QMetaObject::invokeMethod(mainWindow, [](CWindowMain* const mainWindow)
+			QMetaObject::invokeMethod(mainWindow, [](CWindowMain* const mainWindow) noexcept
 			{
 				CDialogInfoWarningError* const infoDialog = new CDialogInfoWarningError(mainWindow, CDialogInfoWarningError::Type::INFO, u"Configuration has been resetted."_s);
 				infoDialog->show();
@@ -91,7 +91,7 @@ void CConfiguration::refresh(CWindowMain* const mainWindow, bool reset)
 	}
 }
 
-void CConfiguration::prettyPrint(std::ostream& ostream, const boost::json::value& json_value, uint8_t level)
+void CConfiguration::prettyPrint(std::ostream& ostream, const boost::json::value& json_value, uint8_t level) noexcept
 {
 	switch (json_value.kind())
 	{

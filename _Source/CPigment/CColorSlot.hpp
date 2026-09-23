@@ -8,11 +8,11 @@ class CLabelTarget;
 class CColorSlot final : public CLabelSvg
 {
 public:
-	explicit CColorSlot(QWidget* const parent, std::pair<const uint8_t, const uint8_t> xy);
-	static const CColorSlot* getSelection();
+	explicit CColorSlot(QWidget* const parent, std::pair<const uint8_t, const uint8_t> xy) noexcept;
+	static const CColorSlot* getSelection() noexcept;
 
-	void setBackgroundColor(const QColor& color) const;
-	void select() const;
+	void setBackgroundColor(const QColor& color) const noexcept;
+	void select() const noexcept;
 
 	const std::pair<const uint8_t, const uint8_t> xy;
 
@@ -23,10 +23,10 @@ private:
 	CLabelTarget* const Target_Label;
 	CLabelMask* const Mask_Label;
 
-	void setSelected(bool selected) const;
+	void setSelected(bool selected) const noexcept;
 
-	void mouseReleaseEvent(QMouseEvent* const event) override;
-	void resizeEvent(QResizeEvent* const event) override;
+	void mouseReleaseEvent(QMouseEvent* const event) noexcept override;
+	void resizeEvent(QResizeEvent* const event) noexcept override;
 
 // friend class CColorSlots;
 friend class CConfiguration;

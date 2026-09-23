@@ -4,7 +4,7 @@
 
 #include <QtWidgets/QLabel>
 
-CDialogOk::CDialogOk(QWidget* const parent, CDialog::ParametersBase&& parameters, const QString& content) :
+CDialogOk::CDialogOk(QWidget* const parent, CDialog::ParametersBase&& parameters, const QString& content) noexcept :
 	CDialogOkCancelApply(parent, {std::move(parameters)}),
 
 	Main_Label(new QLabel)
@@ -19,7 +19,7 @@ CDialogOk::CDialogOk(QWidget* const parent, CDialog::ParametersBase&& parameters
 		this->setContent(content, true);
 }
 
-void CDialogOk::setContent(const QString& content, bool setGeometryMinimumCenter)
+void CDialogOk::setContent(const QString& content, bool setGeometryMinimumCenter) noexcept
 {
 	this->Main_Label->setText(content);
 

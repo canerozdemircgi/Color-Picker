@@ -3,7 +3,7 @@
 #include <QtCore/QEventLoop>
 #include <QtNetwork/QNetworkReply>
 
-QString CWebRest::requestGet(const QString& address, const QString& fallback, uint16_t timeout)
+QString CWebRest::requestGet(const QString& address, const QString& fallback, uint16_t timeout) noexcept
 {
 	QNetworkRequest networkRequest(address);
 	networkRequest.setTransferTimeout(timeout);

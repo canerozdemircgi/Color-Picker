@@ -5,7 +5,7 @@
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QWidget>
 
-void CGui::makeFrameless(QWidget* const widget, Qt::WindowType windowType)
+void CGui::makeFrameless(QWidget* const widget, Qt::WindowType windowType) noexcept
 {
 	widget->setWindowFlags(windowType | Qt::WindowType::FramelessWindowHint);
 
@@ -16,7 +16,7 @@ void CGui::makeFrameless(QWidget* const widget, Qt::WindowType windowType)
 	#endif
 }
 
-QWidget* CGui::window()
+QWidget* CGui::window() noexcept
 {
 	for (const QList<QWidget*> widgets = QApplication::topLevelWidgets(); QWidget* const widget : widgets)
 	{
@@ -27,12 +27,12 @@ QWidget* CGui::window()
 	return nullptr;
 }
 
-QRect CGui::availableGeometryCurrentScreen()
+QRect CGui::availableGeometryCurrentScreen() noexcept
 {
 	return QGuiApplication::screenAt(QCursor::pos())->availableGeometry();
 }
 
-QRect CGui::availableGeometryAllScreens()
+QRect CGui::availableGeometryAllScreens() noexcept
 {
 	QRect rect;
 	for (const QScreen* const screen : QGuiApplication::screens())
@@ -40,11 +40,11 @@ QRect CGui::availableGeometryAllScreens()
 	return rect;
 }
 
-void CGui::setGeometryMinimumCenter(QWidget* const widget)
+void CGui::setGeometryMinimumCenter(QWidget* const widget) noexcept
 {
 	CGui::invalidateLayout(widget);
 
-	QMetaObject::invokeMethod(widget, [](QWidget* const widget)
+	QMetaObject::invokeMethod(widget, [](QWidget* const widget) noexcept
 	{
 		const QWidget* const parent = widget->parentWidget();
 		const QPoint center = parent ? parent->geometry().center() : CGui::availableGeometryCurrentScreen().center();
@@ -53,7 +53,7 @@ void CGui::setGeometryMinimumCenter(QWidget* const widget)
 	}, Qt::ConnectionType::QueuedConnection, widget);
 }
 
-void CGui::invalidateLayout(const QWidget* const widget)
+void CGui::invalidateLayout(const QWidget* const widget) noexcept
 {
 	QList<const QWidget*> children = widget->findChildren<const QWidget*>();
 	children.append(widget);

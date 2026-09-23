@@ -36,5 +36,5 @@ public:
 	};
 	struct Parameters final : public CSvg::ParametersBase, CSvg::ParametersSize {};
 
-	static QPixmap createPixmap(const CSvg::Parameters& parameters);
+	static QPixmap createPixmap(const CSvg::Parameters& parameters) noexcept;
 };
