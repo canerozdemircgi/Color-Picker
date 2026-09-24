@@ -18,5 +18,6 @@ private:
 	void mouseReleaseEvent(QMouseEvent* const event) noexcept override;
 
 	std::move_only_function<void() noexcept> mouseDoubleClicked;
+	bool mouseDoubleClick;
 	void mouseDoubleClickEvent(QMouseEvent* const event) noexcept override;
 };
