@@ -1,0 +1,16 @@
+#pragma once
+
+#include "CTitleBar.hpp"
+#include "ui_CTitleBar.h"
+
+#include "CGui/CSvg.hpp"
+
+template <CLambda<void> Function>
+void CTitleBar::addMenuAction(const QString& icon, const QString& text, Function&& function) const noexcept
+{
+	QObject::connect(this->menu->addAction(CSvg::createPixmap({{{.path = icon}}, {.width = 12, .height = 12}}), text), &QAction::triggered, [this, function = std::forward<Function>(function)] noexcept
+	{
+		this->ui->Icon_PushButton->mousePressAndRelease();
+		function();
+	});
+}

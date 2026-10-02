@@ -1,0 +1,178 @@
+[hasNoBackground=true]
+{
+	background-color: none;
+}
+
+::disabled
+{
+	color: #808080;
+}
+
+QWidget,
+QToolTip
+{
+	background-color: #404040;
+	color: #d0d0d0;
+}
+
+QToolTip
+{
+	border: 1px solid #d0d0d0;
+	border-radius: 2px;
+
+	padding: 2px;
+}
+
+QWidget[accessibleName="CContent"]
+{
+	border: 1px solid #d0d0d0;
+	border-top: 0 none transparent;
+}
+
+QWidget[accessibleName="CWidgetMove"]
+{
+	border-top: 1px solid #d0d0d0;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+QWidget[accessibleName="CWidgetSizeTop"]
+{
+	border-top: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeBottom"]
+{
+	border-bottom: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeLeft"]
+{
+	border-left: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeRight"]
+{
+	border-right: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeTopLeft"]
+{
+	border-top: 1px solid #50a050;
+	border-left: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeTopRight"]
+{
+	border-top: 1px solid #50a050;
+	border-right: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeBottomLeft"]
+{
+	border-bottom: 1px solid #50a050;
+	border-left: 1px solid #50a050;
+}
+
+QWidget[accessibleName="CWidgetSizeBottomRight"]
+{
+	border-bottom: 1px solid #50a050;
+	border-right: 1px solid #50a050;
+}
+
+QMenu
+{
+	border: 1px solid #d0d0d0;
+	border-radius: 2px;
+
+	padding: 2px;
+}
+
+QMenu[accessibleName="CMenu"]
+{
+	border-top: 0 none transparent;
+
+	border-radius: 0;
+	border-bottom-right-radius: 2px;
+
+	padding: 2px;
+}
+
+QMenu::icon
+{
+	left: 10px;
+}
+
+QMenu::item
+{
+	border-radius: 2px;
+
+	height: 30px;
+	padding: 0 30px 0 15px;
+}
+
+QMenu::item:selected
+{
+	background-color: #507094;
+}
+
+QMenu::separator
+{
+	background-color: #808080;
+
+	height: 1px;
+	margin: 5px;
+}
+
+QLabel
+{
+	selection-background-color: #e0e080;
+	selection-color: #202020;
+}
+
+QPushButton
+{
+	background-color: #606060;
+	border-radius: 2px;
+}
+
+QPushButton:hover
+{
+	background-color: #507094;
+}
+
+QPushButton:pressed,
+QPushButton:checked
+{
+	background-color: #488048;
+}
+
+QPushButton[accessibleName="CTitleBarButtonIcon"],
+QPushButton[accessibleName="CTitleBarButtonMenu"]
+{
+	background-color: #507094;
+}
+
+QPushButton[accessibleName="CTitleBarButtonMenu"]
+{
+	padding-left: 10px;
+	padding-right: 15px;
+}
+
+QPushButton[accessibleName="CTitleBarButtonClose"]
+{
+	background-color: #a05050;
+}
+
+QPushButton[accessibleName="CTitleBarButtonMenu"]:hover,
+QPushButton[accessibleName="CTitleBarButtonClose"]:hover
+{
+	background-color: #806080;
+}
+
+QPushButton[accessibleName="CTitleBarButtonMenu"]:pressed,
+QPushButton[accessibleName="CTitleBarButtonClose"]:pressed,
+QPushButton[accessibleName="CTitleBarButtonMenu"]:checked,
+QPushButton[accessibleName="CTitleBarButtonClose"]:checked
+{
+	background-color: #488048;
+}

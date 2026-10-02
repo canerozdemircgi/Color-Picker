@@ -1,0 +1,5 @@
+<RCC>
+	<qresource prefix="/Font">
+		<file>Roboto-VariableFont_wdth,wght.ttf</file>
+	</qresource>
+</RCC>

@@ -1,0 +1,26 @@
+* const -> &
+
+double right click to enable|disable sizers
+
+qt string ile bytearray için xxxview
+
+data yapılarında insert, emplace, append, <<, push vs vs kontrol
+std::array
+std::pair
+std::string
+std::span
+std::vector
+---
+QList
+QHash
+QCache
+---
+boost::optional
+boost::json
+
+button->setIconSize(QSize(14, 14)); ==> button->setIconSize({14, 14}); // .*\(.*\(.*\).*\)
+herşeyin referans bazında kontrolü yani misal size() QSize referans dönüyor olabilir
+
+noexcept for every signature and lambda and even pointers
+
+-march=x86-64-v3 all
